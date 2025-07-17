@@ -1,3 +1,5 @@
-# SCHOOL YEARBOOK APPLICATION
-### Defining the shape of our application
+# school yearbook application
+
+### defining the shape of our application
+
 ![erd](./erd.png)
