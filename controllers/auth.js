@@ -1,77 +1,64 @@
-const User = require('../models/user');
-const bcrypt = require('bcrypt');
-
-
+const User = require('../models/user')
+const bcrypt = require('bcrypt')
 
 exports.auth_signup_get = (req, res) => {
-  res.render('auth/sign-up.ejs');
-};
-
-
+  res.render('auth/sign-up.ejs')
+}
 
 exports.auth_signup_post = async (req, res) => {
-  const emailInDatabase= await User.findOne({email: req.body.email});
-  const userInDatabase = await User.findOne({username: req.body.username});
-  
-  if (userInDatabase) {
-    res.send(' Username already taken! Please choose another one.');
-  }
-  if(emailInDatabase){res.send('Email already taken!')}
+  const emailInDatabase = await User.findOne({ email: req.body.email })
+  const userInDatabase = await User.findOne({ username: req.body.username })
 
-  else if (req.body.password !== req.body.confirmPassword) {
-    res.send('Passwords do not match. Please try again.');
-  } 
-  else {
-    const hashedPassword = bcrypt.hashSync(req.body.password, 10);
+  if (userInDatabase) {
+    res.send(' Username already taken! Please choose another one.')
+  }
+  if (emailInDatabase) {
+    res.send('Email already taken!')
+  } else if (req.body.password !== req.body.confirmPassword) {
+    res.send('Passwords do not match. Please try again.')
+  } else {
+    const hashedPassword = bcrypt.hashSync(req.body.password, 10)
     const newUser = await User.create({
       username: req.body.username,
       password: hashedPassword,
-      role:req.body.role,
-      email:req.body.email
-    });
-    res.send(`Welcome ${newUser.username}! Your account has been created.`);
+      role: req.body.role,
+      email: req.body.email
+    })
+    res.send(`Welcome ${newUser.username}! Your account has been created.`)
   }
-};
-
-
+}
 
 exports.auth_signin_get = (req, res) => {
-  res.render('auth/sign-in.ejs');
-};
-
-
+  res.render('auth/sign-in.ejs')
+}
 
 exports.auth_signin_post = async (req, res) => {
   const emailInDatabase = await User.findOne({ email: req.body.email })
   if (!emailInDatabase) {
-    res.send('Invalid email or password.');
-  } 
-  else {
+    res.send('Invalid email or password.')
+  } else {
     const validPassword = bcrypt.compareSync(
       req.body.password,
       emailInDatabase.password
-    );
-    
+    )
+
     if (!validPassword) {
-      res.send('Invalid email or password.');
-    } 
-    else {
+      res.send('Invalid email or password.')
+    } else {
       req.session.user = {
         email: emailInDatabase.email,
-        id: emailInDatabase._id,
-        
-      };
+        id: emailInDatabase._id
+      }
     }
   }
-  const data= await User.findById(req.session.user._id)
-  if (data.role === 'student') {res.redirect('/')} 
-
-else  (data.role === 'teacher') 
-res.redirect('/')
-  
+  const data = await User.findById(req.session.user._id)
+  if (data.role === 'student') {
+    res.redirect('/')
+  } else data.role === 'teacher'
+  res.redirect('/')
 }
 
-  exports.auth_signout_get= (req, res) => {
+exports.auth_signout_get = (req, res) => {
   try {
     req.session.destroy()
     res.redirect('/')
