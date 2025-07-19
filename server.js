@@ -59,6 +59,12 @@ app.get('/', (req, res) => {
   res.send('your app is connected')
 })
 
+// require routes 
+const teacherRouter = require("./routes/teacher")
+
+// use routes 
+app.use('/teacher', teacherRouter)
+
 app.listen(PORT, () => {
   console.log(`running sever on port no. ${PORT} . . . `)
 })
