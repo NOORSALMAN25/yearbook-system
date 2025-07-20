@@ -1,6 +1,7 @@
-const router = require('express').Router()
-const teacherCtrl = require('../controllers/teacher')
+// const express = require('express')
+// const router = express.Router()
+// const teacherCtrl = require('../controllers/teacher')
 
-router.get('/')
+// router.get('/', teacherCtrl)
 
-module.exports = router
+// module.exports = router

@@ -1,4 +1,4 @@
-const User = require('../models/user')
+const User = require('../models/User')
 const bcrypt = require('bcrypt')
 
 exports.auth_signup_get = (req, res) => {
