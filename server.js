@@ -12,6 +12,8 @@ const PORT = process.env.PORT ? process.env.PORT : 3000
 
 const app = express()
 
+const passUserToView = require('./middleware/pass-user-to-view')
+const isSignedIn = require('./middleware/is-signed-in')
 app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
@@ -24,6 +26,8 @@ app.use(
     saveUninitialized: true
   })
 )
+
+app.use(passUserToView)
 
 // storage
 const Storage = multer.diskStorage({
@@ -64,6 +68,13 @@ app.get('/', (req, res) => {
 // require routes
 const authRouter = require('./routes/auth.js')
 const userRouter = require('./routes/user.js')
+
+// use routes
+app.use('/user', userRouter)
+app.use('/auth', isSignedIn, authRouter)
+
+// require routes
+
 const postRouter = require('./routes/post.js')
 // use routes
 app.use('/user', userRouter)
