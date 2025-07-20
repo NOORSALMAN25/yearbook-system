@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const PostSchema = new mongoose.Schema(
+const postSchema = new mongoose.Schema(
   {
     image: { type: String },
     quote: { type: String, required: true },
@@ -9,6 +9,6 @@ const PostSchema = new mongoose.Schema(
   { timestamps: true }
 )
 
-const Post = mongoose.model('Post', PostSchema)
+const Post = mongoose.model('Post', postSchema)
 
 module.exports = Post
