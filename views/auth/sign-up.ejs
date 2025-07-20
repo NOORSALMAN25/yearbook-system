@@ -2,7 +2,7 @@
 <div class="sign-up-container">
   <h2>School Yearbook App</h2>
   <h3>Sign up to share your moments.</h3>
-  <form action="/auth/sign-up" method="post">
+  <form action="/auth/sign-up" method="post" enctype="multipart/form-data">
     <label for="email">Email:</label>
     <input type="text" name="email" id="email" />
     <br />
@@ -16,6 +16,9 @@
     <label for="ConfirmPassword">Confirm password:</label>
     <input type="password" name="confirmPassword" id="confirmPassword" />
     <br />
+    <label for="image">Upload your profile picture: </label>
+    <input type="file" name="image" accept="image/*" />
+    <br>
     <button type="submit">sign-up</button>
   </form>
 </div>
