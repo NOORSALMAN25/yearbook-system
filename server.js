@@ -56,14 +56,16 @@ app.post('/upload', (req, res) => {
 })
 
 app.get('/', (req, res) => {
-  res.send('your app is connected')
+  res.render('index.ejs')
 })
 
 // require routes
 const teacherRouter = require('./routes/teacher.js')
+const authRouter = require('./routes/auth.js')
 
 // use routes
 // app.use('/teacher', teacherRouter)
+app.use('/auth', authRouter)
 
 app.listen(PORT, () => {
   console.log(`running sever on port no. ${PORT} . . . `)
