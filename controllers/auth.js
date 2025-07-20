@@ -21,7 +21,8 @@ exports.auth_signup_post = async (req, res) => {
     const newUser = await User.create({
       username: req.body.username,
       password: hashedPassword,
-      email: req.body.email
+      email: req.body.email,
+      pfp: req.body.pfp
     })
     res.send(`Welcome ${newUser.username}! Your account has been created.`)
   }
@@ -53,6 +54,7 @@ exports.auth_signin_post = async (req, res) => {
       res.redirect(`/user/${currentUser._id}/profile`)
     }
   }
+
 }
 
 exports.auth_signout_get = (req, res) => {
