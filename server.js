@@ -8,6 +8,8 @@ const multer = require('multer')
 const User = require('./models/User')
 const path = require('path')
 
+
+
 const PORT = process.env.PORT ? process.env.PORT : 3000
 
 const app = express()
@@ -41,7 +43,7 @@ const postRouter = require('./routes/post.js')
 // use routes
 app.use('/auth', authRouter)
 app.use('/user', isSignedIn, userRouter)
-app.use('/posts', postRouter)
+app.use('/posts', isSignedIn, postRouter)
 
 
 app.listen(PORT, () => {
