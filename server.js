@@ -6,11 +6,11 @@ require('dotenv').config()
 const db = require('./config/db')
 const multer = require('multer')
 const User = require('./models/User')
+const path = require('path')
 
 const PORT = process.env.PORT ? process.env.PORT : 3000
 
 const app = express()
-
 
 const passUserToView = require('./middleware/pass-user-to-view')
 const isSignedIn = require('./middleware/is-signed-in')
@@ -18,6 +18,7 @@ app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(methodOverride('_method'))
+app.use(express.static('public'))
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
@@ -71,6 +72,13 @@ const userRouter = require('./routes/user.js')
 // use routes
 app.use('/user', userRouter)
 app.use('/auth', isSignedIn, authRouter)
+
+// require routes
+
+const postRouter = require('./routes/post.js')
+// use routes
+app.use('/posts', postRouter)
+// app.use('/teacher', teacherRouter)
 
 app.listen(PORT, () => {
   console.log(`running sever on port no. ${PORT} . . . `)

@@ -1,0 +1,8 @@
+<h2>All Posts</h2>
+<ul>
+  <% posts.forEach(post => { %>
+  <li>
+    <a href="/posts/<%= post._id %>"><%= post.quote% %></a>
+  </li>
+  <% }) %>
+</ul>
