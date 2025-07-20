@@ -7,7 +7,8 @@ exports.user_show_get = async (req, res) => {
   const data = {
     role: currentUser.role,
     username: currentUser.username,
-    email: currentUser.email
+    email: currentUser.email,
+    pfp: currentUser.pfp
   }
-  res.render('user/profile.ejs', {data})
+  res.render('user/profile.ejs', { data })
 }

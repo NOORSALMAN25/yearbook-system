@@ -6,6 +6,7 @@ exports.auth_signup_get = (req, res) => {
 }
 
 exports.auth_signup_post = async (req, res) => {
+  console.log('req.file', req.file)
   const emailInDatabase = await User.findOne({ email: req.body.email })
   const userInDatabase = await User.findOne({ username: req.body.username })
 
@@ -22,7 +23,7 @@ exports.auth_signup_post = async (req, res) => {
       username: req.body.username,
       password: hashedPassword,
       email: req.body.email,
-      pfp: req.body.pfp
+      pfp: req.file.filename
     })
     res.send(`Welcome ${newUser.username}! Your account has been created.`)
   }
@@ -54,7 +55,6 @@ exports.auth_signin_post = async (req, res) => {
       res.redirect(`/user/${currentUser._id}/profile`)
     }
   }
-
 }
 
 exports.auth_signout_get = (req, res) => {

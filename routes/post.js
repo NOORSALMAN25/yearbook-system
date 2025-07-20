@@ -5,9 +5,7 @@ const Post = require('../models/Post')
 // const upload = require('../config/multer')
 const multer  = require('multer')
 const upload = multer({ dest: 'public/uploads' })
-
 router.post('/posts', upload.single('image'),postCtrl.Posts_create_post)
-
 router.get('/new', postCtrl.Posts_create_get)
 router.post('', postCtrl.Posts_create_post)
 router.get('', postCtrl.Posts_index_get)
