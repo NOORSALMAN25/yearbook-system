@@ -6,15 +6,19 @@ require('dotenv').config()
 const db = require('./config/db')
 const multer = require('multer')
 const User = require('./models/User')
+const path = require('path')
 
 const PORT = process.env.PORT ? process.env.PORT : 3000
 
 const app = express()
 
+const isSignedIn = require('./middleware/is-signed-in.js')
+const passUserToView = require('./middleware/pass-user-to-view')
 app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(methodOverride('_method'))
+app.use(express.static('public'))
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
@@ -23,6 +27,8 @@ app.use(
   })
 )
 
+app.use(passUserToView)
+
 app.get('/', (req, res) => {
   res.render('index.ejs')
 })
@@ -30,11 +36,12 @@ app.get('/', (req, res) => {
 // require routes
 const authRouter = require('./routes/auth.js')
 const userRouter = require('./routes/user.js')
-const isSignedIn = require('./middleware/is-signed-in.js')
+const postRouter = require('./routes/post.js')
 
 // use routes
 app.use('/auth', authRouter)
 app.use('/user', isSignedIn, userRouter)
+app.use('/posts', postRouter)
 
 
 app.listen(PORT, () => {
