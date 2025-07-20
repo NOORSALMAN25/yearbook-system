@@ -1,22 +1,24 @@
 const User = require('../models/User')
 const Post = require('../models/Post')
-const multer  = require('multer')
-const upload = multer({ dest: 'public/uploads' })
-const { post } = require('../routes/post')
+const upload = require('../config/multer')
 
 exports.Posts_create_get = async (req, res) => {
-  console.log(req.session.user)
   res.render('posts/new.ejs')
 }
 
 exports.Posts_create_post = async (req, res) => {
+  console.log('hello')
   const user = await User.findById(req.session.user.id)
-  
-  const imagePath = req.file ? `/uploads/${req.file.filename}` : null
+  console.log('user tracked')
+  const imagePath = req.file ? `public/uploads/${req.file.filename}` : null
+  console.log(imagePath)
+  console.log('file name tracked')
   const post = await Post.create({
     image: imagePath,
-    creator_id: user._id
+    creator_id: user._id,
+    quote: req.body.quote
   })
+
   user.posts.push(post._id)
   await user.save()
 
