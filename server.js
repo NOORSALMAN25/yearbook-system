@@ -54,10 +54,11 @@ app.post('/upload', (req, res) => {
     }
   })
 })
-
+const authRouter = require("./routes/auth")
 app.get('/', (req, res) => {
   res.render('index.ejs')
 })
+app.use("/auth", authRouter)
 
 // require routes
 const teacherRouter = require('./routes/teacher.js')
