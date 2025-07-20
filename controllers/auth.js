@@ -28,12 +28,13 @@ exports.auth_signup_post = async (req, res) => {
   }
 }
 
-exports.auth_signin_get = (req, res) => {
+exports.auth_signin_get = async (req, res) => {
   res.render('auth/sign-in.ejs')
 }
 
 exports.auth_signin_post = async (req, res) => {
   const emailInDatabase = await User.findOne({ email: req.body.email })
+
   if (!emailInDatabase) {
     res.send('Invalid email or password.')
   } else {
@@ -49,6 +50,8 @@ exports.auth_signin_post = async (req, res) => {
         email: emailInDatabase.email,
         id: emailInDatabase._id
       }
+      const currentUser = await User.findOne(req.body.id)
+      res.redirect(`/user/${currentUser._id}/profile`)
     }
   }
 
