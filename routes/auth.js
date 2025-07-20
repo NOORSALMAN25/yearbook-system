@@ -1,6 +1,7 @@
 
 const express = require('express')
 const router = express.Router()
+const upload= require('../uploads/upload')
 
 const authCtrl = require('../controllers/auth')
 
@@ -9,7 +10,7 @@ router.get('/sign-up', authCtrl.auth_signup_get)
 
 
 
-router.post('/sign-up', authCtrl.auth_signup_post)
+router.post('/sign-up',upload.single('pfp'), authCtrl.auth_signup_post)
 
 router.get('/sign-in', authCtrl.auth_signin_get)
 router.post('/sign-in', authCtrl.auth_signin_post)

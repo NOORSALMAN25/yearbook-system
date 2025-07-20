@@ -21,8 +21,8 @@ exports.auth_signup_post = async (req, res) => {
     const newUser = await User.create({
       username: req.body.username,
       password: hashedPassword,
-      role: req.body.role,
-      email: req.body.email
+      email: req.body.email,
+      pfp: req.body.pfp
     })
     res.send(`Welcome ${newUser.username}! Your account has been created.`)
   }
@@ -51,11 +51,7 @@ exports.auth_signin_post = async (req, res) => {
       }
     }
   }
-  const data = await User.findById(req.session.user._id)
-  if (data.role === 'student') {
-    res.redirect('/')
-  } else data.role === 'teacher'
-  res.redirect('/')
+
 }
 
 exports.auth_signout_get = (req, res) => {
