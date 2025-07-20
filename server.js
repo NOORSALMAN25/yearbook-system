@@ -6,6 +6,7 @@ require('dotenv').config()
 const db = require('./config/db')
 const multer = require('multer')
 const User = require('./models/User')
+const path = require('path')
 
 const PORT = process.env.PORT ? process.env.PORT : 3000
 
@@ -15,6 +16,7 @@ app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(methodOverride('_method'))
+app.use(express.static('public'))
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
@@ -56,13 +58,14 @@ app.post('/upload', (req, res) => {
 })
 
 app.get('/', (req, res) => {
-  res.send('your app is connected')
+  res.render('./posts/new.ejs')
 })
 
 // require routes
 const teacherRouter = require('./routes/teacher.js')
-
+const postRouter = require('./routes/post.js')
 // use routes
+app.use('/posts', postRouter)
 // app.use('/teacher', teacherRouter)
 
 app.listen(PORT, () => {
