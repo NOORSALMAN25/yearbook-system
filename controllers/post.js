@@ -34,3 +34,8 @@ exports.Posts_show_get = async (req, res) => {
   const post = await Post.findById(req.params.postId)
   res.render('posts/show.ejs', { post })
 }
+
+exports.Posts_delete_delete = async (req, res) => {
+  await Post.findByIdAndDelete(req.params.postId)
+  res.redirect('/posts')
+}

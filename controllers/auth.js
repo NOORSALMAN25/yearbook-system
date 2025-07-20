@@ -14,8 +14,13 @@ exports.auth_signup_post = async (req, res) => {
   }
   if (emailInDatabase) {
     res.send('Email already taken!')
-  } else if (req.body.password !== req.body.confirmPassword ||req.body.password.length>1) {
-    res.send('Passwords do not match or password was not entered. Please try again.')
+  } else if (
+    req.body.password !== req.body.confirmPassword ||
+    req.body.password.length > 1
+  ) {
+    res.send(
+      'Passwords do not match or password was not entered. Please try again.'
+    )
   } else {
     const hashedPassword = bcrypt.hashSync(req.body.password, 10)
     const newUser = await User.create({
