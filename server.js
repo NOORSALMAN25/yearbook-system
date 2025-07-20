@@ -54,18 +54,17 @@ app.post('/upload', (req, res) => {
     }
   })
 })
-const authRouter = require("./routes/auth")
+
 app.get('/', (req, res) => {
   res.render('index.ejs')
 })
-app.use("/auth", authRouter)
 
 // require routes
-const teacherRouter = require('./routes/teacher.js')
 const authRouter = require('./routes/auth.js')
+const userRouter = require('./routes/user.js')
 
 // use routes
-// app.use('/teacher', teacherRouter)
+app.use('/user', userRouter)
 app.use('/auth', authRouter)
 
 app.listen(PORT, () => {
