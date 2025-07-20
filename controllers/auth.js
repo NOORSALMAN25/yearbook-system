@@ -21,19 +21,19 @@ exports.auth_signup_post = async (req, res) => {
     const newUser = await User.create({
       username: req.body.username,
       password: hashedPassword,
-      role: req.body.role,
       email: req.body.email
     })
     res.send(`Welcome ${newUser.username}! Your account has been created.`)
   }
 }
 
-exports.auth_signin_get = (req, res) => {
+exports.auth_signin_get = async (req, res) => {
   res.render('auth/sign-in.ejs')
 }
 
 exports.auth_signin_post = async (req, res) => {
   const emailInDatabase = await User.findOne({ email: req.body.email })
+
   if (!emailInDatabase) {
     res.send('Invalid email or password.')
   } else {
@@ -49,13 +49,10 @@ exports.auth_signin_post = async (req, res) => {
         email: emailInDatabase.email,
         id: emailInDatabase._id
       }
+      const currentUser = await User.findOne(req.body.id)
+      res.redirect(`/user/${currentUser._id}/profile`)
     }
   }
-  const data = await User.findById(req.session.user._id)
-  if (data.role === 'student') {
-    res.redirect('/')
-  } else data.role === 'teacher'
-  res.redirect('/')
 }
 
 exports.auth_signout_get = (req, res) => {
