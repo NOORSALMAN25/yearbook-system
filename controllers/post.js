@@ -26,8 +26,13 @@ exports.Posts_create_post = async (req, res) => {
 }
 
 exports.Posts_index_get = async (req, res) => {
-  const posts = await Post.find()
-  // console.log(posts)
+  const user = User.findById(req.session.user)
+  let posts = []
+  if (user.role === 'user') {
+    posts = await Post.find({ creator_id: req.session.user.id })
+  } else {
+    posts = await Post.find()
+  }
   res.render('posts/all.ejs', { posts })
 }
 
