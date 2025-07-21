@@ -8,7 +8,6 @@ const multer = require('multer')
 const User = require('./models/User')
 const path = require('path')
 
-
 const PORT = process.env.PORT ? process.env.PORT : 3000
 
 const app = express()
@@ -43,7 +42,6 @@ const postRouter = require('./routes/post.js')
 app.use('/auth', authRouter)
 app.use('/user', isSignedIn, userRouter)
 app.use('/posts', isSignedIn, postRouter)
-
 
 app.listen(PORT, () => {
   console.log(`running sever on port no. ${PORT} . . . `)
