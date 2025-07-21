@@ -12,6 +12,7 @@ const PORT = process.env.PORT ? process.env.PORT : 3000
 
 const app = express()
 
+const isATeacher = require('./middleware/is-a-teacher-.js')
 const isSignedIn = require('./middleware/is-signed-in.js')
 const passUserToView = require('./middleware/pass-user-to-view')
 app.use(logger('dev'))
@@ -37,11 +38,13 @@ app.get('/', (req, res) => {
 const authRouter = require('./routes/auth.js')
 const userRouter = require('./routes/user.js')
 const postRouter = require('./routes/post.js')
+const yearbookRouter = require('./routes/yearbook.js')
 
 // use routes
 app.use('/auth', authRouter)
 app.use('/user', isSignedIn, userRouter)
 app.use('/posts', isSignedIn, postRouter)
+app.use('/yearbook', isSignedIn, isATeacher, yearbookRouter)
 
 app.listen(PORT, () => {
   console.log(`running sever on port no. ${PORT} . . . `)

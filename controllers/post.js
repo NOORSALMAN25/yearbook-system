@@ -26,9 +26,10 @@ exports.Posts_create_post = async (req, res) => {
 }
 
 exports.Posts_index_get = async (req, res) => {
-
-  const user = User.findById(req.session.user)
+  const user = await User.findById(req.session.user.id)
   let posts = []
+  console.log('user.role', user)
+  console.log('user.role', user.role)
   if (user.role === 'student') {
     posts = await Post.find({ creator_id: req.session.user.id })
   } else {
@@ -40,7 +41,9 @@ exports.Posts_index_get = async (req, res) => {
 
 exports.Posts_show_get = async (req, res) => {
   const post = await Post.findById(req.params.postId)
-  res.render('posts/show.ejs', { post })
+  const user = await User.findById(req.session.user.id)
+  const roleOfUser = user.role
+  res.render('posts/show.ejs', { post, user, roleOfUser })
 }
 
 exports.Posts_edit_get = async (req, res) => {
@@ -49,14 +52,14 @@ exports.Posts_edit_get = async (req, res) => {
 }
 
 exports.Posts_update_put = async (req, res) => {
-  console.log(req.file)
-  console.log(req.body)
-  console.log(req.params.postId)
   await Post.findByIdAndUpdate(req.params.postId, req.body)
   res.redirect(`/posts/${req.params.postId}`)
 }
 
 exports.Posts_delete_delete = async (req, res) => {
+  await User.findByIdAndUpdate(req.session.user.id, {
+    $pull: { posts: req.params.postId }
+  })
   const post = await Post.findByIdAndDelete(req.params.postId)
   await post.deleteOne()
   res.redirect('/posts/all')

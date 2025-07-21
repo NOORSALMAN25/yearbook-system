@@ -7,6 +7,16 @@
 
 <p><%= post.quote%></p>
 
+<% console.log('role of user', roleOfUser) %>
+<% if(roleOfUser==='teacher'){ %>
+<a href="/yearbook">
+  <button>approve</button>
+</a>
+<form action="/posts/<%= post._id %>?_method=DELETE" method="POST">
+  <button>reject</button>
+</form>
+
+<%}%>
 <a href="/posts/<%= post._id %>/edit">Edit</a>
 
 <form action="/posts/<%= post._id %>?_method=DELETE" method="POST">

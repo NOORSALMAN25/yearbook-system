@@ -50,9 +50,10 @@ exports.auth_signin_post = async (req, res) => {
     } else {
       req.session.user = {
         email: emailInDatabase.email,
-        id: emailInDatabase._id
+        id: emailInDatabase._id,
+        role: emailInDatabase.role
       }
-      // const currentUser = await User.findOne(req.body.id)
+      const currentUser = await User.findOne(req.body.id)
       res.redirect(`/user/${emailInDatabase._id}/profile`)
     }
   }
