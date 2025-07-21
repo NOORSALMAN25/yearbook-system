@@ -28,7 +28,7 @@ exports.Posts_create_post = async (req, res) => {
 exports.Posts_index_get = async (req, res) => {
   const user = User.findById(req.session.user)
   let posts = []
-  if (user.role === 'user') {
+  if (user.role === 'student') {
     posts = await Post.find({ creator_id: req.session.user.id })
   } else {
     posts = await Post.find()
