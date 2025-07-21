@@ -4,12 +4,15 @@
 <h3>Explore all posts</h3>
 <ul>
   <% posts.forEach((post) => { %>
+  <a href="/posts/<%= post._id%>">
+    <img
+      src="<%= post.image.replace(/^public/, '') %>"
+      alt="Post Image"
+      style="width: 200px"
+    />
+  </a>
 
-  <img
-    src="<%= post.image.replace(/^public/, '') %>"
-    alt="Post Image"
-    style="width: 200px"
-  />
-    <p><%= post.quote%></p>
+  <p><%= post.quote%></p>
+
   <% }) %>
 </ul>

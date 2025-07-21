@@ -6,7 +6,6 @@ exports.user_show_get = async (req, res) => {
   console.log(user._id)
   const posts = await Post.find({ creator_id: user._id })
   const data = {
-    role: user.role,
     username: user.username,
     email: user.email,
     pfp: user.pfp,

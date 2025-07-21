@@ -1,11 +1,13 @@
 <a href="/posts/new">new post</a>
 <a href="/posts/all">all posts</a>
 <a href=""></a>
-<br>
+<br />
 <h3>show page</h3>
 <img src="<%= post.image.replace(/^public/, '') %>" alt="Post Image" />
 
 <p><%= post.quote%></p>
+
+<a href="/posts/<%= post._id %>/edit">Edit</a>
 
 <form action="/posts/<%= post._id %>?_method=DELETE" method="POST">
   <button type="submit">Delete</button>

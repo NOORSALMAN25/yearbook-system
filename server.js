@@ -16,7 +16,7 @@ const isSignedIn = require('./middleware/is-signed-in.js')
 const passUserToView = require('./middleware/pass-user-to-view')
 app.use(logger('dev'))
 app.use(express.json())
-app.use(express.urlencoded({ extended: false }))
+app.use(express.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
 app.use(express.static('public'))
 app.use(
