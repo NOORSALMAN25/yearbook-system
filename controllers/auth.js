@@ -24,7 +24,7 @@ exports.auth_signup_post = async (req, res) => {
     username: req.body.username,
     password: hashedPassword,
     email: req.body.email,
-    pfp: req.file.filename
+    pfp: req.file ? req.file.filename : 'default_pfp.jpg'
   })
   res.send(`Welcome ${newUser.username}! Your account has been created.`)
 }
