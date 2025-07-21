@@ -26,8 +26,10 @@ exports.Posts_create_post = async (req, res) => {
 }
 
 exports.Posts_index_get = async (req, res) => {
-  const posts = await post.find()
-  res.render('posts/all.ejs', { posts })
+  const imagePath = req.file ? `public/uploads/${req.file.filename}` : null
+  console.log(imagePath)
+  const posts = await imagePath
+  res.render('posts/all.ejs', posts)
 }
 
 exports.Posts_show_get = async (req, res) => {
