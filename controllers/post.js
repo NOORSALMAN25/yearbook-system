@@ -1,6 +1,6 @@
 const User = require('../models/User')
 const Post = require('../models/Post')
-const upload = require('../config/multer')
+// const upload = require('../config/multer')
 
 exports.Posts_create_get = async (req, res) => {
   res.render('posts/new.ejs')
@@ -26,7 +26,8 @@ exports.Posts_create_post = async (req, res) => {
 }
 
 exports.Posts_index_get = async (req, res) => {
-  const posts = await post.find()
+  const posts = await Post.find()
+  // console.log(posts)
   res.render('posts/all.ejs', { posts })
 }
 

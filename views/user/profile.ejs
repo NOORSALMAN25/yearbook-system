@@ -1,5 +1,17 @@
-<a href="/posts/new">new post</a>
+<a href="/posts/new">new</a>
+<a href="/posts/all">explore</a>
 
+<h2><%= data.username %>'s Profile</h2>
+<img src="/uploads/<%= data.pfp %>" alt="Profile Picture" />
+<br />
+<br />
+<div>
+  <a href="/auth/<%= data._id %>/edit">
+    <button>Edit profile</button>
+  </a>
+</div>
 
-<h2><%= data.username %>'s profile</h2>
-<img src="/uploads/<%= data.pfp %>" />
+<h3>Your Posts</h3>
+<% const stringIds = data.posts.map(id => id.toString())%>
+<%console.log(stringIds) %> 
+
