@@ -26,6 +26,7 @@ exports.Posts_create_post = async (req, res) => {
 }
 
 exports.Posts_index_get = async (req, res) => {
+
   const user = User.findById(req.session.user)
   let posts = []
   if (user.role === 'student') {
@@ -33,10 +34,30 @@ exports.Posts_index_get = async (req, res) => {
   } else {
     posts = await Post.find()
   }
+
   res.render('posts/all.ejs', { posts })
 }
 
 exports.Posts_show_get = async (req, res) => {
   const post = await Post.findById(req.params.postId)
   res.render('posts/show.ejs', { post })
+}
+
+exports.Posts_edit_get = async (req, res) => {
+  const post = await Post.findById(req.params.postId)
+  res.render('posts/edit.ejs', { post })
+}
+
+exports.Posts_update_put = async (req, res) => {
+  console.log(req.file)
+  console.log(req.body)
+  console.log(req.params.postId)
+  await Post.findByIdAndUpdate(req.params.postId, req.body)
+  res.redirect(`/posts/${req.params.postId}`)
+}
+
+exports.Posts_delete_delete = async (req, res) => {
+  const post = await Post.findByIdAndDelete(req.params.postId)
+  await post.deleteOne()
+  res.redirect('/posts/all')
 }

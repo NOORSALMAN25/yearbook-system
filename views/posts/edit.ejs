@@ -1,0 +1,13 @@
+<h3>Share a moment</h3>
+<form action="/posts/<%= post._id%>?_method=PUT" method="post">
+  <br />
+  <label for="quote">Comment:</label>
+  <textarea
+    name="quote"
+    id="quote"
+    placeholder="Enter a Comment"
+    value="<%= post.quote %>"
+  ></textarea>
+  <br />
+  <button type="submit">Edit Post</button>
+</form>
