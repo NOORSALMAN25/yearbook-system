@@ -7,12 +7,12 @@ exports.Posts_create_get = async (req, res) => {
 }
 
 exports.Posts_create_post = async (req, res) => {
-  console.log('hello')
+  // console.log('hello')
   const user = await User.findById(req.session.user.id)
-  console.log('user tracked')
+  // console.log('user tracked')
   const imagePath = req.file ? `public/uploads/${req.file.filename}` : null
-  console.log(imagePath)
-  console.log('file name tracked')
+  // console.log(imagePath)
+  // console.log('file name tracked')
   const post = await Post.create({
     image: imagePath,
     creator_id: user._id,
