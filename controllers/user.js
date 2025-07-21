@@ -2,7 +2,7 @@ const User = require('../models/User')
 const Post = require('../models/Post')
 
 exports.user_show_get = async (req, res) => {
-  const currentUser = await User.findById(req.params.id)
+  const currentUser = await User.findOne(req.session.user)
   const data = {
     role: currentUser.role,
     username: currentUser.username,

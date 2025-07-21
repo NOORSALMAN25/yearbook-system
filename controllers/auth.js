@@ -10,24 +10,24 @@ exports.auth_signup_post = async (req, res) => {
   const emailInDatabase = await User.findOne({ email: req.body.email })
   const userInDatabase = await User.findOne({ username: req.body.username })
   if (userInDatabase) {
-    res.send(' Username already taken! Please choose another one.')
+    return res.send(' Username already taken! Please choose another one.')
   }
   if (emailInDatabase) {
     res.send('Email already taken!')
   } else if (req.body.password !== req.body.confirmPassword) {
-    res.send(
+    return res.send(
       'Passwords do not match or password was not entered. Please try again.'
     )
-  } else {
-    const hashedPassword = bcrypt.hashSync(req.body.password, 10)
-    const newUser = await User.create({
-      username: req.body.username,
-      password: hashedPassword,
-      email: req.body.email,
-      pfp: req.file.filename
-    })
-    res.send(`Welcome ${newUser.username}! Your account has been created.`)
   }
+
+  const hashedPassword = bcrypt.hashSync(req.body.password, 10)
+  const newUser = await User.create({
+    username: req.body.username,
+    password: hashedPassword,
+    email: req.body.email,
+    pfp: req.file.filename
+  })
+  res.send(`Welcome ${newUser.username}! Your account has been created.`)
 }
 
 exports.auth_signin_get = async (req, res) => {

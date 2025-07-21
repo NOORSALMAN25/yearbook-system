@@ -8,7 +8,7 @@ router.post('/', upload.single('image'), postCtrl.Posts_create_post)
 
 router.get('/new', postCtrl.Posts_create_get)
 // router.post('', postCtrl.Posts_create_post)
-router.get('', postCtrl.Posts_index_get)
+router.get('/all', postCtrl.Posts_index_get)
 router.get('/:postId', postCtrl.Posts_show_get)
 
 router.delete('/:postId', postCtrl.Posts_delete_delete)
