@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const yearbookSchema = new mongoose.Schema({
-  post_id: { type: Array, required: true },
+  post_id: { type: Array, ref: 'Post', required: true },
   creator_id: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   year: { type: Number, required: true }
 })
