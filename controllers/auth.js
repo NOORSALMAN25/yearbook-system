@@ -6,7 +6,6 @@ exports.auth_signup_get = (req, res) => {
 }
 
 exports.auth_signup_post = async (req, res) => {
-  console.log('req.file', req.file)
   const emailInDatabase = await User.findOne({ email: req.body.email })
   const userInDatabase = await User.findOne({ username: req.body.username })
   if (userInDatabase) {
@@ -35,6 +34,7 @@ exports.auth_signin_get = async (req, res) => {
 }
 
 exports.auth_signin_post = async (req, res) => {
+  // console.log('req.body', req.body)
   const emailInDatabase = await User.findOne({ email: req.body.email })
 
   if (!emailInDatabase) {
@@ -52,8 +52,8 @@ exports.auth_signin_post = async (req, res) => {
         email: emailInDatabase.email,
         id: emailInDatabase._id
       }
-      const currentUser = await User.findOne(req.body.id)
-      res.redirect(`/user/${currentUser._id}/profile`)
+      // const currentUser = await User.findOne(req.body.id)
+      res.redirect(`/user/${emailInDatabase._id}/profile`)
     }
   }
 }
