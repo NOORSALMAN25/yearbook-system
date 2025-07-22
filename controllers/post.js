@@ -3,6 +3,7 @@ const Post = require('../models/Post')
 // const upload = require('../config/multer')
 
 exports.Posts_create_get = async (req, res) => {
+  console.log(req.session.user)
   res.render('posts/new.ejs')
 }
 
