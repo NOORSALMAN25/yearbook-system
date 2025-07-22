@@ -9,17 +9,23 @@ exports.auth_signup_post = async (req, res) => {
   console.log('req.file', req.file)
   const emailInDatabase = await User.findOne({ email: req.body.email })
   const userInDatabase = await User.findOne({ username: req.body.username })
+  
+  if(!req.body.email) return res.send('Email empty')
+  if (emailInDatabase) {
+    return res.send('Email already taken!')}
+      
+    if(!req.body.username) return res.send('Username empty')
   if (userInDatabase) {
     return res.send(' Username already taken! Please choose another one.')
   }
-  if (emailInDatabase) {
-    return res.send('Email already taken!')
-  }if (password) {
-    return res.send('password empty')
-    if (password !== confirmPassword) {
+    
+  if (!req.body.password) {
+    return res.send('Password empty')}
+  
+  if (req.body.password !== req.body.confirmPassword) 
       return res.send('Passwords do not match. Please try again.')
-    }
-  }
+    
+  
     const hashedPassword = bcrypt.hashSync(req.body.password, 10)
     const newUser = await User.create({
       username: req.body.username,
