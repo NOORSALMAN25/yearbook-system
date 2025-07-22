@@ -1,0 +1,10 @@
+<%- include('../partials/nav.ejs') %>
+<ul>
+  <% students.forEach((student)=> { %>
+    <li><%=student.username%></li>
+
+  <form action="/teacher/<%=student.id%>?_method=DELETE" method="POST">
+    <button type="submit">remove</button>
+  </form>
+  <%}) %>
+</ul>

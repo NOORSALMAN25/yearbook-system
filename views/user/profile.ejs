@@ -2,24 +2,31 @@
 
 <h2><%= user.username %>'s Profile</h2>
 
-<img src="/uploads/<%= user.pfp %>" alt="Profile Picture" style="width: 100px"/>
+<img
+  src="/uploads/<%= user.pfp %>"
+  alt="Profile Picture"
+  style="width: 100px"
+/>
 <br />
 <br />
+
 <div>
   <a href="/user/<%= user.id %>/edit">
     <button>Edit profile</button>
   </a>
 </div>
 
+<% if(user.role ==='teacher') { %>
+<a href="/teacher"><%=students.length%> students</a>  
+  <% } %>
 <h3>Posts</h3>
 
-  <% user.posts.forEach((post) => { %>
-  <a href="/posts/<%= post._id%>">
-    <img
-      src="<%= post.image.replace(/^public/, '') %>"
-      alt="Post Image"
-      style="width: 200px"
-    />
-  </a>
-  <% }) %>
-
+<% user.posts.forEach((post) => { %>
+<a href="/posts/<%= post._id%>">
+  <img
+    src="<%= post.image.replace(/^public/, '') %>"
+    alt="Post Image"
+    style="width: 200px"
+  />
+</a>
+<% }) %>
