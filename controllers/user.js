@@ -19,11 +19,13 @@ exports.user_show_get = async (req, res) => {
 exports.user_edit_get = async (req, res) => {
   const currentUser = await User.findById(req.session.user.id)
   const userId = req.params.id
+
   if (userId === req.session.user.id) {
     res.render('user/edit.ejs', { currentUser })
   } else {
     res.send("You don't have permission to do that.")
   }
+
 }
 exports.user_update_put = async (req, res) => {
   const { username, password, confirmPassword } = req.body

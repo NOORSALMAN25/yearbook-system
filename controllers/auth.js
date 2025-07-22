@@ -9,31 +9,19 @@ exports.auth_signup_post = async (req, res) => {
   console.log('req.file', req.file)
   const emailInDatabase = await User.findOne({ email: req.body.email })
   const userInDatabase = await User.findOne({ username: req.body.username })
-  
-  if(!req.body.email) return res.send('Email empty')
+
+  if (!req.body.email) return res.send('Email empty')
   if (emailInDatabase) {
-    return res.send('Email already taken!')}
-      
-    if(!req.body.username) return res.send('Username empty')
+    return res.send('Email already taken!')
+  }
+
+  if (!req.body.username) return res.send('Username empty')
   if (userInDatabase) {
     return res.send(' Username already taken! Please choose another one.')
   }
-    
+
   if (!req.body.password) {
-    return res.send('Password empty')}
-  
-  if (req.body.password !== req.body.confirmPassword) 
-      return res.send('Passwords do not match. Please try again.')
-    
-  
-    const hashedPassword = bcrypt.hashSync(req.body.password, 10)
-    const newUser = await User.create({
-      username: req.body.username,
-      password: hashedPassword,
-      email: req.body.email,
-      pfp: req.file ? req.file.filename : 'default_pfp.jpg'
-    })
-    res.send(`Welcome ${newUser.username}! Your account has been created.`)
+    return res.send('Password empty')
   }
   if (req.body.password !== req.body.confirmPassword) {
     return res.send(
@@ -48,6 +36,19 @@ exports.auth_signup_post = async (req, res) => {
     pfp: req.file ? req.file.filename : 'default_pfp.jpg'
   })
   res.send(`Welcome ${newUser.username}! Your account has been created.`)
+}
+
+  if (req.body.password !== req.body.confirmPassword)
+    return res.send('Passwords do not match. Please try again.')
+
+  const hashedPassword = bcrypt.hashSync(req.body.password, 10)
+  const newUser = await User.create({
+    username: req.body.username,
+    password: hashedPassword,
+    email: req.body.email,
+    pfp: req.file ? req.file.filename : 'default_pfp.jpg'
+  })
+  res.redirect('sign-in')
 }
 
 exports.auth_signin_get = async (req, res) => {
