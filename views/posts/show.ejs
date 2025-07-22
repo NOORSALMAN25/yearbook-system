@@ -6,7 +6,11 @@
 <a href=""></a>
 <br />
 <h3>show page</h3>
-<img src="<%`public/uploads/${pfpOfPoster}`%>"alt="pfp"><p>posted by <%= postedByName %></p>
+<%console.log('posted by id', postedById._id)%>
+<a href="http://localhost:3000/user/<%=postedById._id %>/profile">
+  <img src="<%=`/uploads/${pfpOfPoster}`%>" alt="pfp" />
+</a>
+<p>posted by <%= postedByName %></p>
 <img src="<%= post.image.replace(/^public/, '') %>" alt="Post Image" />
 
 <p><%= post.quote%></p>

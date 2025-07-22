@@ -41,11 +41,12 @@ exports.Posts_show_get = async (req, res) => {
   const post = await Post.findById(req.params.postId)
   const user = await User.findById(req.session.user.id)
   const postedById = await User.findById(post.creator_id)
+  // console.log(postedById)
   const pfpOfPoster = await postedById.pfp
   const postedByName = await postedById.username
   const roleOfUser = user.role
-  console.log('pfp', pfpOfPoster)
-  res.render('posts/show.ejs', { post, user, roleOfUser, postedByName, pfpOfPoster})
+  // console.log('pfp', pfpOfPoster)
+  res.render('posts/show.ejs', { post, user, roleOfUser, postedByName, pfpOfPoster, postedById})
 }
 
 exports.Posts_edit_get = async (req, res) => {
