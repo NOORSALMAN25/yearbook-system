@@ -35,13 +35,26 @@ exports.auth_signup_post = async (req, res) => {
     })
     res.send(`Welcome ${newUser.username}! Your account has been created.`)
   }
+  if (req.body.password !== req.body.confirmPassword) {
+    return res.send(
+      'Passwords do not match or password was not entered. Please try again.'
+    )
+  }
+  const hashedPassword = bcrypt.hashSync(req.body.password, 10)
+  const newUser = await User.create({
+    username: req.body.username,
+    password: hashedPassword,
+    email: req.body.email,
+    pfp: req.file ? req.file.filename : 'default_pfp.jpg'
+  })
+  res.send(`Welcome ${newUser.username}! Your account has been created.`)
+}
 
 exports.auth_signin_get = async (req, res) => {
   res.render('auth/sign-in.ejs')
 }
 
 exports.auth_signin_post = async (req, res) => {
-
   const emailInDatabase = await User.findOne({ email: req.body.email })
 
   if (!emailInDatabase) {
@@ -61,7 +74,7 @@ exports.auth_signin_post = async (req, res) => {
         role: emailInDatabase.role
       }
       const currentUser = await User.findOne(req.body.id)
-      res.redirect(`/user/${emailInDatabase._id}/profile`)
+      res.redirect(`/user/${req.session.user.id}/profile`)
     }
   }
 }

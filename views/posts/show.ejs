@@ -1,10 +1,6 @@
-<a href="/posts/new">new</a>
-<a href="/posts/all">explore</a>
-<a href="/yearbook">yearbook</a>
-<a href="/auth/sign-out">sign-out</a>
 
-<a href=""></a>
-<br />
+<%- include('../partials/nav.ejs') %>
+
 <h3>show page</h3>
 <%console.log('posted by id', postedById._id)%>
 <a href="http://localhost:3000/user/<%=postedById._id %>/profile">
@@ -15,7 +11,9 @@
 
 <p><%= post.quote%></p>
 
+
 <% if(roleOfUser==='teacher'){ %>
+
 
 <a href="/yearbook">
   <button>approve</button>
