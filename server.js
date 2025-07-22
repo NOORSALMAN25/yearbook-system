@@ -44,7 +44,7 @@ const yearbookRouter = require('./routes/yearbook.js')
 app.use('/auth', authRouter)
 app.use('/user', isSignedIn, userRouter)
 app.use('/posts', isSignedIn, postRouter)
-app.use('/yearbook', isSignedIn, isATeacher, yearbookRouter)
+// app.use('/yearbook', isSignedIn, isATeacher, yearbookRouter)
 
 app.listen(PORT, () => {
   console.log(`running sever on port no. ${PORT} . . . `)
