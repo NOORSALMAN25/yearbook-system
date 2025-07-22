@@ -39,12 +39,14 @@ const authRouter = require('./routes/auth.js')
 const userRouter = require('./routes/user.js')
 const postRouter = require('./routes/post.js')
 const yearbookRouter = require('./routes/yearbook.js')
+const teacherRouter= require('./routes/teacher.js')
 
 // use routes
 app.use('/auth', authRouter)
 app.use('/user', isSignedIn, userRouter)
 app.use('/posts', isSignedIn, postRouter)
 app.use('/yearbook', isSignedIn, isATeacher, yearbookRouter)
+app.use('/teacher', isSignedIn, isATeacher, teacherRouter)
 
 app.listen(PORT, () => {
   console.log(`running sever on port no. ${PORT} . . . `)

@@ -22,11 +22,10 @@ exports.auth_signup_post = async (req, res) => {
 
   if (!req.body.password) {
     return res.send('Password empty')
-  }
-
-  if (req.body.password !== req.body.confirmPassword)
-    return res.send('Passwords do not match. Please try again.')
-
+} else if (req.body.password !== req.body.confirmPassword) {
+    return res.send(
+      'Passwords do not match or password was not entered. Please try again.')
+}
   const hashedPassword = bcrypt.hashSync(req.body.password, 10)
   const newUser = await User.create({
     username: req.body.username,
