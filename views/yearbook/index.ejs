@@ -1,7 +1,13 @@
+<a href="/posts/new">new</a>
+<a href="/posts/all">explore</a>
+<a href="/yearbook">yearbook</a>
+<a href="/auth/sign-out">sign-out</a>
+
 <h3>yearbook posts</h3>
 <ul>
   <% posts.forEach((post) => { %>
   <a href="/posts/<%= post._id%>">
+    <%console.log(posts)%>
     <img
       src="<%= post.image.replace(/^public/, '') %>"
       alt="Post Image"

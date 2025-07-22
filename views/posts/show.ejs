@@ -1,16 +1,18 @@
 <a href="/posts/new">new</a>
 <a href="/posts/all">explore</a>
 <a href="/yearbook">yearbook</a>
+<a href="/auth/sign-out">sign-out</a>
 
 <a href=""></a>
 <br />
 <h3>show page</h3>
+<img src="<%`public/uploads/${pfpOfPoster}`%>"alt="pfp"><p>posted by <%= postedByName %></p>
 <img src="<%= post.image.replace(/^public/, '') %>" alt="Post Image" />
 
 <p><%= post.quote%></p>
 
-<% console.log('role of user', roleOfUser) %>
 <% if(roleOfUser==='teacher'){ %>
+
 <a href="/yearbook">
   <button>approve</button>
 </a>
