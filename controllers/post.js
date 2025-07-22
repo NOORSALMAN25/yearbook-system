@@ -29,8 +29,6 @@ exports.Posts_create_post = async (req, res) => {
 exports.Posts_index_get = async (req, res) => {
   const user = await User.findById(req.session.user.id)
   let posts = []
-  console.log('user.role', user)
-  console.log('user.role', user.role)
   if (user.role === 'student') {
     posts = await Post.find({ creator_id: req.session.user.id })
   } else {
@@ -43,8 +41,13 @@ exports.Posts_index_get = async (req, res) => {
 exports.Posts_show_get = async (req, res) => {
   const post = await Post.findById(req.params.postId)
   const user = await User.findById(req.session.user.id)
+  const postedById = await User.findById(post.creator_id)
+  // console.log(postedById)
+  const pfpOfPoster = await postedById.pfp
+  const postedByName = await postedById.username
   const roleOfUser = user.role
-  res.render('posts/show.ejs', { post, user, roleOfUser })
+  // console.log('pfp', pfpOfPoster)
+  res.render('posts/show.ejs', { post, user, roleOfUser, postedByName, pfpOfPoster, postedById})
 }
 
 exports.Posts_edit_get = async (req, res) => {

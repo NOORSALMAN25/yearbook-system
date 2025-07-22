@@ -1,8 +1,11 @@
+
 <%- include('../partials/nav.ejs') %>
+
 <h3>yearbook posts</h3>
 <ul>
   <% posts.forEach((post) => { %>
   <a href="/posts/<%= post._id%>">
+    <%console.log(posts)%>
     <img
       src="<%= post.image.replace(/^public/, '') %>"
       alt="Post Image"
