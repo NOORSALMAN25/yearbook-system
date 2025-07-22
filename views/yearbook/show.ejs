@@ -2,10 +2,6 @@
 
 <h3>yearbook posts</h3>
 <ul>
-  <% yearbook.forEach((post) => { %>
-  <img src="/uploads/<%= post.post_id%>" alt="Post Image" style="width: 200px" />
-
-  <p><%= post.quote%></p>
-
-  <% }) %>
+  <img src="<%=posts.image.replace(/^public/, '')%>" alt="post img" style="width: 200px">
+  <p><%= posts.quote%></p>
 </ul>
