@@ -22,25 +22,10 @@ exports.auth_signup_post = async (req, res) => {
 
   if (!req.body.password) {
     return res.send('Password empty')
-  }
-  if (req.body.password !== req.body.confirmPassword) {
+} else if (req.body.password !== req.body.confirmPassword) {
     return res.send(
-      'Passwords do not match or password was not entered. Please try again.'
-    )
-  }
-  const hashedPassword = bcrypt.hashSync(req.body.password, 10)
-  const newUser = await User.create({
-    username: req.body.username,
-    password: hashedPassword,
-    email: req.body.email,
-    pfp: req.file ? req.file.filename : 'default_pfp.jpg'
-  })
-  res.send(`Welcome ${newUser.username}! Your account has been created.`)
+      'Passwords do not match or password was not entered. Please try again.')
 }
-
-  if (req.body.password !== req.body.confirmPassword)
-    return res.send('Passwords do not match. Please try again.')
-
   const hashedPassword = bcrypt.hashSync(req.body.password, 10)
   const newUser = await User.create({
     username: req.body.username,
@@ -75,7 +60,7 @@ exports.auth_signin_post = async (req, res) => {
         role: emailInDatabase.role
       }
       const currentUser = await User.findOne(req.body.id)
-      res.redirect(`/user/${req.session.user.id}/profile`)
+      res.redirect(`/user/${emailInDatabase._id}/profile`)
     }
   }
 }
