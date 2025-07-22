@@ -1,19 +1,12 @@
-
 <%- include('../partials/nav.ejs') %>
 
 <h3>yearbook posts</h3>
-<ul>
-  <% posts.forEach((post) => { %>
-  <a href="/posts/<%= post._id%>">
-    <%console.log(posts)%>
-    <img
-      src="<%= post.image.replace(/^public/, '') %>"
-      alt="Post Image"
-      style="width: 200px"
-    />
-  </a>
 
-  <p><%= post.quote%></p>
-
-  <% }) %>
-</ul>
+<% yearbookPosts.forEach((post) => { %>
+<img
+  src="<%=post.post_id.image.replace(/^public/, '')%>"
+  alt="Post Image"
+  style="width: 200px"
+/>
+<p><%= post.quote%></p>
+<% }) %>

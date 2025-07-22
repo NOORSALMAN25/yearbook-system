@@ -3,7 +3,7 @@ const Post = require('../models/Post')
 const bcrypt = require('bcrypt')
 exports.user_show_get = async (req, res) => {
   const user = await User.findById(req.params.id)
-  
+
   const posts = await Post.find({ creator_id: user._id })
   const data = {
     id: user._id,
@@ -12,7 +12,6 @@ exports.user_show_get = async (req, res) => {
     pfp: user.pfp,
     posts: posts
   }
-  console.log(data)
   res.render('user/profile.ejs', { user: data })
 }
 

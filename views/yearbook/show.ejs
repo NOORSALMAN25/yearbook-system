@@ -1,0 +1,11 @@
+<%- include('../partials/nav.ejs') %>
+
+<h3>yearbook posts</h3>
+<ul>
+  <% yearbook.forEach((post) => { %>
+  <img src="/uploads/<%= post.post_id%>" alt="Post Image" style="width: 200px" />
+
+  <p><%= post.quote%></p>
+
+  <% }) %>
+</ul>
