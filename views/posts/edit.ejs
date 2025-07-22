@@ -1,7 +1,4 @@
-<a href="/posts/new">new</a>
-<a href="/posts/all">explore</a>
-<a href="/yearbook">yearbook</a>
-
+<%- include('../partials/nav.ejs') %>
 <h3>Share a moment</h3>
 <form action="/posts/<%= post._id%>?_method=PUT" method="post">
   <br />
