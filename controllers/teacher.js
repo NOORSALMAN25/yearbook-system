@@ -9,12 +9,12 @@ exports.teacher_index_get = async (req, res) => {
       students.push(user)
     }
   })
-  res.render('user/teacher.ejs', {students})
+  res.render('user/teacher.ejs', { students })
 }
 
-
-exports.teacher_delete_delete = async(req, res)=> {
+exports.teacher_delete_delete = async (req, res) => {
   await User.findByIdAndDelete(req.params.id)
   await Post.findByIdAndDelete(req.params.id.posts)
+
   res.redirect('/teacher')
 }
