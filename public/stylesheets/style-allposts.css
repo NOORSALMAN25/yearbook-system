@@ -5,9 +5,9 @@
 }
 
 body {
-  background-color: #000000;
+  /* background-color: #000000; */
   color: #ffffff;
-  font-family: 'Arial', sans-serif;
+  font-family: Helvetica;
   padding: 20px;
   height: 100vh;
 }
@@ -22,13 +22,13 @@ body {
 }
 
 .post-card {
-  background-color: #ffffff;
+  /* background-color: #ffffff; */
   border-radius: 15px;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   text-decoration: none;
-  color: inherit;
+  color: whitesmoke;
   display: block;
 }
 
@@ -46,13 +46,12 @@ body {
 
 .post-content {
   padding: 20px;
-  background-color: #ffffff;
+  /* background-color: #ffffff; */
 }
 
 .post-quote {
-  color: #333333;
+  color: whitesmoke;
   font-size: 1.1rem;
   line-height: 1.6;
-  font-style: italic;
   margin: 0;
 }

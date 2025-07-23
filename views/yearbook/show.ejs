@@ -3,18 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Approved post</title>
+    <link rel="icon" href="/logos/icon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="stylesheets/style.css" />
+    <title>approved post</title>
   </head>
   <body>
-    <h3>yearbook posts</h3>
+    <%- include('../partials/nav.ejs') %>
+  <div class="sign-in-container">
+    <div class="inner-container">
+    yearbook posts
     <ul>
-      <img
+      <img 
         src="<%=posts.image.replace(/^public/, '')%>"
         alt="post img"
         style="width: 200px"
       />
       <p><%= posts.quote%></p>
     </ul>
+    </div> 
+    </div>
   </body>
-  <%- include('../partials/nav.ejs') %>
+
 </html>

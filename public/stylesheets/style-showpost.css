@@ -1,11 +1,12 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  box-sizing: border-box;  
+  font-family: Helvetica;
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: Helvetica;
   background-color: black;
   color: white;
   padding: 20px;
@@ -27,10 +28,7 @@ body {
   margin-bottom: 20px;
   border-bottom: 2px solid #eee;
   padding-bottom: 15px;
-}
-
-.header h3 {
-  font-size: 24px;
+  font-size: 20px;
   color: black;
 }
 
@@ -53,7 +51,6 @@ body {
 
 .username {
   font-size: 16px;
-  font-weight: bold;
   color: black;
   text-decoration: none;
 }
@@ -90,7 +87,13 @@ body {
 .teacher-buttons {
   margin-bottom: 20px;
   text-align: center;
+  display: flex; 
+  flex-direction: inline;
+  justify-content: center;
+  align-items: center;
 }
+
+
 
 .teacher-buttons h4 {
   margin-bottom: 10px;
@@ -103,18 +106,26 @@ button {
   border: none;
   border-radius: 5px;
   font-size: 14px;
-
-  font-weight: bold;
 }
 
 .approve-btn {
-  background-color: #28a745;
+  background-color: #599e3b;
   color: white;
+}
+
+.approve-btn:hover {
+  background-color: #599e3b;
+  color: black;
 }
 
 .reject-btn {
   background-color: #dc3545;
   color: white;
+}
+
+.reject-btn:hover {
+  background-color: #dc3545;
+  color: rgb(0, 0, 0);
 }
 
 .delete-btn {
@@ -126,16 +137,24 @@ button {
   display: inline-block;
   padding: 10px 20px;
   margin: 5px;
-  background-color: #007bff;
-  color: white;
+  color: black;
   text-decoration: none;
   border-radius: 5px;
-  font-weight: bold;
 }
 
 .user-actions {
   text-align: center;
   margin-top: 15px;
+}
+
+
+.edit-link:hover {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 5px;
+  color: #0b2748;
+  text-decoration: none;
+  border-radius: 5px;
 }
 
 .user-actions h4 {
