@@ -1,4 +1,160 @@
 nav {
+  padding: 20px;
+  margin: 0;
+  /* background-color: red; */
+}
+
+img {
+  width: 150px;
+  align-content: center;
+  position: absolute;
+  align-items: center;
+}
+
+body {
   background-color: black;
-  padding: 10px;
+  color: rgb(255, 255, 255);
+  font-family: Helvetica;
+}
+
+h2 {
+  font-weight: 200;
+  display: flex;
+  flex-direction: inline;
+  padding: 20px;
+}
+a {
+  text-decoration: none;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  align-items: right;
+  display: flex;
+  flex-direction: inline;
+  justify-content: right;
+}
+
+li {
+  margin: 10px;
+}
+
+button {
+  color: white;
+  font-size: 16px;
+  font-family: Helvetica;
+  font-size: 18px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 8px;
+  align-items: center;
+  display: flex;
+  flex-direction: inline;
+  font-weight: 200;
+  justify-content: right;
+  /* background-color: yellowgreen; */
+}
+
+button:hover {
+  color: #ff8ca1;
+}
+
+.inner-container {
+  /* background-color: red; */
+  font-weight: 100;
+  padding: 20px;
+  font-size: 25px;
+  /* display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-self: center; */
+}
+
+input {
+  background-color: black;
+  color: white;
+  font-size: 15px;
+  border: none;
+  width: 300px;
+}
+
+.input {
+  color: #757575;
+  font-size: 15px;
+  border: none;
+  font-weight: 400;
+}
+
+.sign-up-button:hover {
+  color: #8dc9fe;
+}
+
+.save-changes-button:hover {
+  color: #ca4153;
+}
+
+.sign-in-container {
+  /* background-color: red; */
+  font-weight: 100;
+  padding: 20px;
+}
+
+.profile:hover {
+  color: #8dc9fe;
+}
+
+.new:hover {
+  color: #919ff7;
+}
+
+.explore:hover {
+  color: #b9f4a0;
+}
+
+.yearbook:hover {
+  color: #ebab56;
+}
+
+.connect {
+  margin: 2px;
+}
+
+.showcase {
+  margin: 2px;
+}
+
+.remember {
+  color: #ff8ca1;
+  margin: 2px;
+}
+
+.tagline {
+  display: flex;
+  flex-direction: inline;
+}
+
+#pictures {
+  background-color: #ca4153;
+  display: grid;
+  grid-template-rows: 1fr;
+}
+
+.student {
+  border-bottom: #757575 0.5px solid;
+}
+.remove-student {
+  background-color: #919ff7;
+  text-align: right;
+  color: black;
+}
+
+.remove-student:hover {
+  background-color: #ff8ca1;
+  color: black;
+  text-align: right;
+}
+
+.underline {
+  border-bottom: #ff8ca1 1px solid;
 }

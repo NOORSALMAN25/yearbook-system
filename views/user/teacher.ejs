@@ -3,18 +3,32 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My students</title>
+    <link rel="icon" href="../logos/icon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <title>students</title>
   </head>
   <body>
-    <ul>
-      <% students.forEach((student)=> { %>
-      <li><%=student.username%></li>
+    <%- include('../partials/nav.ejs') %>
 
-      <form action="/teacher/<%=student.id%>?_method=DELETE" method="POST">
-        <button type="submit">remove</button>
-      </form>
+    <div class="inner-container">
+      My students
+      <div class="underline">
+      <br>
+      </div>
+      <br>
+      <div class="student">
+        <% students.forEach((student)=> { %> <%=student.email%>
+        <br />
+        <br>
+        <div>
+          <form action="/teacher/<%=student.id%>?_method=DELETE" method="POST">
+            <button type="submit" class="remove-student">remove</button>
+          </form>
+        </div>
+        <br />
+      </div>
+
       <%}) %>
-    </ul>
+    </div>
   </body>
-  <%- include('../partials/nav.ejs') %>
 </html>

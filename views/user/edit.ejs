@@ -3,16 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Edit profile</title>
+    <link rel="icon" href="../logos/icon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <title>edit profile</title>
   </head>
   <body>
+    <%- include('../partials/nav.ejs')%>
+<div class="sign-up-container">
+<div class="inner-container">
+Edit profile 
+<br>
     <form
       action="/user/<%= currentUser._id%>?_method=PUT"
       method="post"
       enctype="multipart/form-data"
     >
       <br />
-      <label for="email">Email:</label>
+      <br>
+      <label for="email" class="input">email: </label>
       <input
         type="text"
         name="email"
@@ -20,7 +28,8 @@
         value="<%=currentUser.email%>"
       />
       <br />
-      <label for="username">Username:</label>
+      <br>
+      <label for="username" class="input">username:</label>
       <input
         type="text"
         name="username"
@@ -28,15 +37,23 @@
         value="<%= currentUser.username %>"
       />
       <br />
-      <input type="file" name="pfp" accept="img/*" id="pfp" />
-      <label for="password">Password:</label>
-      <input type="password" name="password" id="password" />
+      <br>
+      <div class="input">
+        upload profile picture
+        <input type="file" name="pfp" accept="img/*" id="pfp" />
+      </div>
+      <br>
+      <label for="password" class="input">password:</label>
+      <input type="password" name="password" id="password" placeholder="enter new password" />
       <br />
-      <label for="confirmPassword">Confirm password:</label>
-      <input type="password" name="confirmPassword" id="confirmPassword" />
+      <br>
+      <label for="confirmPassword" class="input">confirm password:</label>
+      <input type="password" name="confirmPassword" id="confirmPassword"
+      placeholder="confirm new password" />
       <br />
-      <input type="submit" name="Sign Up" />
+      <br>
+      <button type="submit" class="save-changes-button">save changes</button>
     </form>
+    </div>
   </body>
-  <%- include('../partials/nav.ejs') %>
 </html>
