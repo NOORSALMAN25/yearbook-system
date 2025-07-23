@@ -14,20 +14,24 @@
       <li class="stuffLi"><h2 class="username"><%= user.username %></h2></li>
       </ul>
     </div>
-
-    <div id="editButton">
-      <a href="/user/<%= user.id %>/edit">
-        <button>Edit profile</button>
-      </a>
-    </div>
-
+        <div>
     <% if(user.role ==='teacher') { %>
-    <a href="/teacher"
+    <a  class="stuffies" href="/teacher"
       ><%=students.length%> <%if(students.length !==1) {%> students <%} else {%>
       student <% } %>
     </a>
     <% } %>
-    <h3>Posts</h3>
+    </div>
+    <br>
+        <div id="editButton">
+      <a href="/user/<%= user.id %>/edit">
+        <button>Edit profile</button>
+      </a>
+    </div>
+    <br>
+
+
+    <h3 class="stuff">Posts</h3>
 
 <div class="grid">
   <% user.posts.forEach((post) => { %>

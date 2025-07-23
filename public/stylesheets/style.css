@@ -169,19 +169,19 @@ input {
   padding: 100px
 } */
 
-#stuff{
+#stuff {
   display: flex;
   justify-content: start;
-    margin: 10px;
-  padding:10px;
+  margin: 10px;
+  padding: 10px;
 }
 
 .username {
   margin-left: 55px;
 }
-.stuffLi{
+.stuffLi {
   margin: 10px;
-  padding:10px;
+  padding: 10px;
 }
 
 .grid {
@@ -201,8 +201,8 @@ input {
 
 /* Individual post card */
 .card {
-  background-color: #fff;
-  border: 1px solid #dbdbdb;
+  background-color: black;
+  /* border: 1px solid #dbdbdb; */
   border-radius: 12px;
   width: 300px;
   overflow: hidden;
@@ -221,14 +221,13 @@ input {
   height: 300px;
   object-fit: cover;
   display: block;
-  border-bottom: 1px solid #eee;
 }
 
 /* Quote or caption under the image */
 .card-text {
   padding: 1rem;
   font-size: 0.95rem;
-  color: #262626;
+  color: #eee;
   line-height: 1.5;
 }
 
@@ -239,3 +238,19 @@ input {
   display: block;
 }
 
+#editButton {
+  padding-bottom: 10px;
+  margin-left: 40px;
+  border-bottom: #757575 0.5px solid;
+}
+
+.stuff {
+  margin-left: 50px;
+  font-weight: 100;
+}
+
+.stuffies {
+  margin-left: 50px;
+  font-weight: 100;
+  color: #ff8ca1;
+}
