@@ -4,21 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Profile</title>
+    <link rel="stylesheet" href="/stylesheets/profileStyle.css" />
   </head>
   <body>
-    <h2><%= user.username %>'s Profile</h2>
-
-    <img
+    <div class="name">
+      <img class="pfp"
       src="/uploads/<%= user.pfp %>"
       alt="Profile Picture"
-      style="width: 100px"
-    />
+      style="width: 100px "
+      />
+    <h2><%= user.username %>'s Profile</h2>
+  </div>
     <br />
     <br />
-
-    <div>
+    <div  id="editButton">
       <a href="/user/<%= user.id %>/edit">
-        <button>Edit profile</button>
+        <button >Edit profile</button>
       </a>
     </div>
 
@@ -30,15 +31,19 @@
     <% } %>
     <h3>Posts</h3>
 
-    <% user.posts.forEach((post) => { %>
-    <a href="/posts/<%= post._id%>">
-      <img
-        src="<%= post.image.replace(/^public/, '') %>"
-        alt="Post Image"
-        style="width: 200px"
-      />
-    </a>
-    <% }) %>
+    <div class="grid">
+
+      <% user.posts.forEach((post) => { %>
+      <a href="/posts/<%= post._id%>">
+        <img class="post"
+          src="<%= post.image.replace(/^public/, '') %>"
+          alt="Post Image"
+          
+          />
+          <p><%= post.quote%></p>
+      </a>
+      <% }) %>
+      </div>
   </body>
   <%- include('../partials/nav.ejs') %>
 </html>

@@ -1,0 +1,37 @@
+.pfp {
+  border-radius: 50%;
+}
+.post {
+  justify-content: center;
+  align-items: center;
+  border-radius: 5%;
+  width: 200px
+}
+
+.grid {
+  display: grid;
+
+  grid-template-columns: 20% 20% 20% 20% 20%;
+  margin: 0;
+  justify-content: center;
+  text-align: center;
+}
+
+button {
+  padding: 4px;
+  width: 60em;
+}
+
+#editButton {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+
+.name{
+  margin: 0;
+  gap: 10px;
+  display: flex;
+  justify-content: start;
+}
