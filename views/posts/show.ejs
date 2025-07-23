@@ -3,42 +3,102 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/style-showpost.css" />
     <title>Document</title>
   </head>
   <body>
-    <h3>show page</h3>
-    <%console.log('posted by id', postedById._id)%>
-    <a href="http://localhost:3000/user/<%=postedById._id %>/profile">
+    <div class="container">
+      <div class="header">
+        <h3>Post Details</h3>
+      </div>
+      <div class="user-info">
+        <a href="http://localhost:3000/user/<%=postedById._id %>/profile">
+          <img
+            src="<%=`/uploads/${pfpOfPoster}`%>"
+            alt="Profile Picture"
+            class="profile-pic"
+          />
+        </a>
+        <div>
+          <a
+            href="http://localhost:3000/user/<%=postedById._id %>/profile"
+            class="username"
+          >
+            Posted by <%= postedByName %>
+          </a>
+        </div>
+      </div>
+
       <img
-        src="<%=`/uploads/${pfpOfPoster}`%>"
-        alt="pfp"
-        style="width: 100px"
+        src="<%= post.image.replace(/^public/, '') %>"
+        alt="Post Image"
+        class="post-image"
       />
-    </a>
-    <p>posted by <%= postedByName %></p>
-    <img
-      src="<%= post.image.replace(/^public/, '') %>"
-      alt="Post Image"
-      style="width: 200px"
-    />
 
-    <p><%= post.quote%></p>
+      <div class="post-quote"><%= post.quote %></div>
 
-    <% if(roleOfUser==='teacher'){ %>
-    <form action="/yearbook/<%= post._id %>" method="POST">
-      <button type="submit">approve</button>
-    </form>
+      <div class="buttons-section">
+        <% if(roleOfUser === 'teacher'){ %>
+        <div class="teacher-buttons">
+          <h4>Add To Year Book :</h4>
 
-    <form action="/posts/<%= post._id %>?_method=DELETE" method="POST">
-      <button type="submit">reject</button>
-    </form>
+          <form
+            action="/yearbook/<%= post._id %>"
+            method="POST"
+            style="display: inline"
+          >
+            <button type="submit" class="approve-btn">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="24px"
+                viewBox="0 -960 960 960"
+                width="24px"
+                fill="#1f1f1f"
+              >
+                <path
+                  d="m434-297 226-227-56-56-170 170-85-85-57 57 142 141ZM160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h240l80 80h320q33 0 56.5 23.5T880-640v400q0 33-23.5 56.5T800-160H160Zm0-80h640v-400H447l-80-80H160v480Zm0 0v-480 480Z"
+                />
+              </svg>
+            </button>
+          </form>
 
-    <%}%>
-    <a href="/posts/<%= post._id %>/edit">Edit</a>
+          <form
+            action="/posts/<%= post._id %>?_method=DELETE"
+            method="POST"
+            style="display: inline"
+          >
+            <button type="submit" class="reject-btn">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="24px"
+                viewBox="0 -960 960 960"
+                width="24px"
+                fill="#1f1f1f"
+              >
+                <path
+                  d="m609-181 70-70 70 70 30-30-69-69 70-70-30-30-70 70-70-70-30 30 70 70-70 70 29 29Zm-489 21v-640l572 240h-12q-35 0-66 8t-60 22L200-680v140l240 60-240 60v140l216-92q-8 23-12 45.5t-4 46.5v2L120-160Zm560 80q-83 0-141.5-58.5T480-280q0-83 58.5-141.5T680-480q83 0 141.5 58.5T880-280q0 83-58.5 141.5T680-80ZM200-372v-308 400-92Z"
+                />
+              </svg>
+            </button>
+          </form>
+        </div>
+        <% } %>
 
-    <form action="/posts/<%= post._id %>?_method=DELETE" method="POST">
-      <button type="submit">Delete</button>
-    </form>
+        <div class="user-actions">
+          <a href="/posts/<%= post._id %>/edit" class="edit-link"
+            >✏️ Edit Post</a
+          >
+
+          <form
+            action="/posts/<%= post._id %>?_method=DELETE"
+            method="POST"
+            style="display: inline"
+          >
+            <button type="submit" class="delete-btn">🗑️ Delete Post</button>
+          </form>
+        </div>
+      </div>
+    </div>
   </body>
   <%- include('../partials/nav.ejs') %>
 </html>
