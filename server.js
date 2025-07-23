@@ -45,7 +45,7 @@ const teacherRouter= require('./routes/teacher.js')
 app.use('/auth', authRouter)
 app.use('/user', isSignedIn, userRouter)
 app.use('/posts', isSignedIn, postRouter)
-app.use('/yearbook', isSignedIn, isATeacher, yearbookRouter)
+app.use('/yearbook', isSignedIn, yearbookRouter)
 app.use('/teacher', isSignedIn, isATeacher, teacherRouter)
 
 app.listen(PORT, () => {

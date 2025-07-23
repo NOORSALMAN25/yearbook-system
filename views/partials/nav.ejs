@@ -1,7 +1,18 @@
-<nav>
-  <a href="/user/<%= user.id %>/profile">Profile</a>
-  <a href="/posts/new">Create Post</a>
-  <a href="/posts/all">Explore Posts</a>
-  <a href="/yearbook">Yearbook</a>
-  <a href="/auth/sign-out">sign out</a>
-</nav>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <nav>
+      <a href="/user/<%= loggedInuser.id %>/profile">Profile</a>
+      <a href="/posts/new">Create Post</a>
+      <a href="/posts/all">Explore Posts</a>
+      <a href="/yearbook">Yearbook</a>
+      <a href="/auth/sign-out">sign out</a>
+    </nav>
+  </body>
+</html>

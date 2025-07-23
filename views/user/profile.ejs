@@ -1,25 +1,44 @@
-<%- include('../partials/nav.ejs') %>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile</title>
+  </head>
+  <body>
+    <h2><%= user.username %>'s Profile</h2>
 
-<h2><%= user.username %>'s Profile</h2>
-
-<img src="/uploads/<%= user.pfp %>" alt="Profile Picture" style="width: 100px"/>
-<br />
-<br />
-<div>
-  <a href="/user/<%= user.id %>/edit">
-    <button>Edit profile</button>
-  </a>
-</div>
-
-<h3>Posts</h3>
-
-  <% user.posts.forEach((post) => { %>
-  <a href="/posts/<%= post._id%>">
     <img
-      src="<%= post.image.replace(/^public/, '') %>"
-      alt="Post Image"
-      style="width: 200px"
+      src="/uploads/<%= user.pfp %>"
+      alt="Profile Picture"
+      style="width: 100px"
     />
-  </a>
-  <% }) %>
+    <br />
+    <br />
 
+    <div>
+      <a href="/user/<%= user.id %>/edit">
+        <button>Edit profile</button>
+      </a>
+    </div>
+
+    <% if(user.role ==='teacher') { %>
+    <a href="/teacher"
+      ><%=students.length%> <%if(students.length !==1) {%> students <%} else {%>
+      student <% } %>
+    </a>
+    <% } %>
+    <h3>Posts</h3>
+
+    <% user.posts.forEach((post) => { %>
+    <a href="/posts/<%= post._id%>">
+      <img
+        src="<%= post.image.replace(/^public/, '') %>"
+        alt="Post Image"
+        style="width: 200px"
+      />
+    </a>
+    <% }) %>
+  </body>
+  <%- include('../partials/nav.ejs') %>
+</html>

@@ -1,30 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h3>show page</h3>
+    <%console.log('posted by id', postedById._id)%>
+    <a href="http://localhost:3000/user/<%=postedById._id %>/profile">
+      <img
+        src="<%=`/uploads/${pfpOfPoster}`%>"
+        alt="pfp"
+        style="width: 100px"
+      />
+    </a>
+    <p>posted by <%= postedByName %></p>
+    <img
+      src="<%= post.image.replace(/^public/, '') %>"
+      alt="Post Image"
+      style="width: 200px"
+    />
 
-<%- include('../partials/nav.ejs') %>
+    <p><%= post.quote%></p>
 
-<h3>show page</h3>
-<%console.log('posted by id', postedById._id)%>
-<a href="http://localhost:3000/user/<%=postedById._id %>/profile">
-  <img src="<%=`/uploads/${pfpOfPoster}`%>" alt="pfp"  style="width: 100px"/>
-</a>
-<p>posted by <%= postedByName %></p>
-<img src="<%= post.image.replace(/^public/, '') %>" alt="Post Image"  style="width: 200px"/>
+    <% if(roleOfUser==='teacher'){ %>
+    <form action="/yearbook/<%= post._id %>" method="POST">
+      <button type="submit">approve</button>
+    </form>
 
-<p><%= post.quote%></p>
+    <form action="/posts/<%= post._id %>?_method=DELETE" method="POST">
+      <button type="submit">reject</button>
+    </form>
 
+    <%}%>
+    <a href="/posts/<%= post._id %>/edit">Edit</a>
 
-<% if(roleOfUser==='teacher'){ %>
-<form action="/yearbook/<%= post._id %>" method="POST">
-  <button type="submit">approve</button>
-</form>
-
-
-<form action="/posts/<%= post._id %>?_method=DELETE" method="POST">
-  <button type="submit">reject</button>
-</form>
-
-<%}%>
-<a href="/posts/<%= post._id %>/edit">Edit</a>
-
-<form action="/posts/<%= post._id %>?_method=DELETE" method="POST">
-  <button type="submit">Delete</button>
-</form>
+    <form action="/posts/<%= post._id %>?_method=DELETE" method="POST">
+      <button type="submit">Delete</button>
+    </form>
+  </body>
+  <%- include('../partials/nav.ejs') %>
+</html>

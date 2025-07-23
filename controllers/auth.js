@@ -10,22 +10,27 @@ exports.auth_signup_post = async (req, res) => {
   const emailInDatabase = await User.findOne({ email: req.body.email })
   const userInDatabase = await User.findOne({ username: req.body.username })
 
-  if (!req.body.email) return res.send('Email empty')
+  if (!req.body.email) {
+    return res.send('Email empty')
+  }
   if (emailInDatabase) {
     return res.send('Email already taken!')
   }
 
-  if (!req.body.username) return res.send('Username empty')
+  if (!req.body.username) {
+    return res.send('Username empty')
+  }
   if (userInDatabase) {
     return res.send(' Username already taken! Please choose another one.')
   }
 
   if (!req.body.password) {
     return res.send('Password empty')
-} else if (req.body.password !== req.body.confirmPassword) {
+  } else if (req.body.password !== req.body.confirmPassword) {
     return res.send(
-      'Passwords do not match or password was not entered. Please try again.')
-}
+      'Passwords do not match or password was not entered. Please try again.'
+    )
+  }
   const hashedPassword = bcrypt.hashSync(req.body.password, 10)
   const newUser = await User.create({
     username: req.body.username,
@@ -59,6 +64,13 @@ exports.auth_signin_post = async (req, res) => {
         id: emailInDatabase._id,
         role: emailInDatabase.role
       }
+
+      req.session.loggedInuser = {
+        email: emailInDatabase.email,
+        id: emailInDatabase._id,
+        role: emailInDatabase.role
+      }
+
       const currentUser = await User.findOne(req.body.id)
       res.redirect(`/user/${emailInDatabase._id}/profile`)
     }

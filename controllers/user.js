@@ -3,16 +3,23 @@ const Post = require('../models/Post')
 const bcrypt = require('bcrypt')
 exports.user_show_get = async (req, res) => {
   const user = await User.findById(req.params.id)
-
+  const users =await User.find({})
+  const students =[]
+  users.forEach((user)=> {
+    if(user.role==='student') {
+      students.push(user)
+    }
+  })
   const posts = await Post.find({ creator_id: user._id })
   const data = {
     id: user._id,
     username: user.username,
     email: user.email,
     pfp: user.pfp,
-    posts: posts
+    posts: posts, 
+    role: user.role,
   }
-  res.render('user/profile.ejs', { user: data })
+  res.render('user/profile.ejs', { user: data, students })
 }
 
 exports.user_edit_get = async (req, res) => {

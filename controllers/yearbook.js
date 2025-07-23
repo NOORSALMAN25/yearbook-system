@@ -5,7 +5,6 @@ const Post = require('../models/Post')
 // API
 exports.yearbook_create_post = async (req, res) => {
   const posts = await Post.findById(req.params.postId)
-  console.log(posts)
   const yearbook = await Yearbook.create([
     {
       post_id: req.params.postId,
@@ -13,7 +12,7 @@ exports.yearbook_create_post = async (req, res) => {
       year: 2025
     }
   ])
-  res.render('yearbook/show.ejs', { yearbook })
+  res.render('yearbook/show.ejs', { yearbook, posts })
 }
 
 exports.yearbook_index_get = async (req, res) => {

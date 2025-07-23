@@ -1,11 +1,20 @@
-<%- include('../partials/nav.ejs') %>
-
-<h3>yearbook posts</h3>
-<ul>
-  <% yearbook.forEach((post) => { %>
-  <img src="/uploads/<%= post.post_id%>" alt="Post Image" style="width: 200px" />
-
-  <p><%= post.quote%></p>
-
-  <% }) %>
-</ul>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Approved post</title>
+  </head>
+  <body>
+    <h3>yearbook posts</h3>
+    <ul>
+      <img
+        src="<%=posts.image.replace(/^public/, '')%>"
+        alt="post img"
+        style="width: 200px"
+      />
+      <p><%= posts.quote%></p>
+    </ul>
+  </body>
+  <%- include('../partials/nav.ejs') %>
+</html>
