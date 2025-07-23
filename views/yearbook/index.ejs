@@ -3,21 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/style-yearbook.css" />
     <title>Your Peerfolio</title>
   </head>
   <body>
     <%- include('../partials/nav.ejs') %>
     <h3>yearbook posts</h3>
-
-    <% yearbookPosts.forEach((post) => { %> <% if (post.post_id) { %>
-    <img
-      src="<%=post.post_id.image.replace(/^public/, '')%>"
-      alt="Post Image"
-      style="width: 200px"
-    />
-    <p><%= post.quote%></p>
-    <p><%= post.year%></p>
-
-    <% }}) %>
+    <div class="yearbook-container">
+      <% yearbookPosts.forEach((post) => { %> <% if (post.post_id) { %>
+      <div class="yearbook-card">
+        <img
+          src="<%=post.post_id.image.replace(/^public/, '')%>"
+          alt="Post Image"
+          class="post-image"
+        />
+        <p class="quote"><%= post.post_id.quote %></p>
+        <p class="year"><%= post.year %></p>
+      </div>
+      <% } %> <% }) %>
+    </div>
   </body>
 </html>

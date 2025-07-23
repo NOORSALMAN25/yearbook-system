@@ -3,18 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/style-showYB.css" />
     <title>Approved post</title>
   </head>
   <body>
-    <h3>yearbook posts</h3>
-    <ul>
+    <%- include('../partials/nav.ejs') %>
+
+    <h3>Yearbook Post</h3>
+
+    <div class="post-container">
       <img
         src="<%=posts.image.replace(/^public/, '')%>"
-        alt="post img"
-        style="width: 200px"
+        alt="Post Image"
+        class="post-image"
       />
-      <p><%= posts.quote%></p>
-    </ul>
+      <p class="post-quote"><%= posts.quote%></p>
+    </div>
   </body>
-  <%- include('../partials/nav.ejs') %>
 </html>

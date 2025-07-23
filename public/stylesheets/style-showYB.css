@@ -1,0 +1,71 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+  color: #ffffff;
+  font-family: 'Georgia', serif;
+  padding: 40px 20px;
+  min-height: 100vh;
+  position: relative;
+}
+
+h3 {
+  text-align: center;
+  font-size: 3rem;
+  margin-bottom: 50px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background: linear-gradient(45deg, #919ff7, #ca4153, #8dc9fe, #ebab56);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+}
+
+.post-container {
+  width: 800px;
+  margin: 0 auto;
+  background: linear-gradient(145deg, #ffffff, #f5f5f5);
+  border-radius: 25px;
+  padding: 50px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  position: relative;
+  transform: perspective(1000px) rotateX(2deg);
+  transition: all 0.4s ease;
+}
+
+.post-image {
+  width: 100%;
+  width: 500px;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 20px;
+  margin: 0 auto 40px auto;
+  display: block;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 0 5px rgba(255, 215, 0, 0.1);
+  transition: all 0.4s ease;
+  position: relative;
+}
+
+.post-quote {
+  color: #333;
+  font-size: 1.8rem;
+  line-height: 1.8;
+  text-align: center;
+  position: relative;
+  padding: 30px 40px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 215, 0, 0.05),
+    rgba(255, 20, 147, 0.05)
+  );
+  border-radius: 15px;
+  border-left: 5px solid #ca4153;
+  margin-top: 20px;
+}
