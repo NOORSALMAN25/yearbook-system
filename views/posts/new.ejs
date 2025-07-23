@@ -3,23 +3,40 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/style-newpost.css" />
     <title>Create post</title>
   </head>
   <body>
-    <h3>Share a moment</h3>
-    <form action="/posts" method="post" enctype="multipart/form-data">
-      <label for="image">Image:</label>
-      <input type="file" name="image" accept="image/*" />
-      <br />
-      <label for="quote">Comment:</label>
-      <textarea
-        name="quote"
-        id="quote"
-        placeholder="Enter a Comment"
-      ></textarea>
-      <br />
-      <button type="submit">Create</button>
-    </form>
-  </body>
+  <div class="container">
+        <div class="header">
+            <button class="close-btn" onclick="window.history.back()">×</button>
+            <h1>New post</h1>
+        
+        </div>
+
+        <div class="form-container">
+            <form id="postForm" action="/posts" method="post" enctype="multipart/form-data">
+                <div class="upload-area" onclick="document.getElementById('imageInput').click()">
+                    <div class="upload-icon">+</div>
+                    <div class="upload-text">Click to upload image</div>
+                    <input type="file" id="imageInput" name="image" accept="image/*" class="file-input">
+                </div>
+
+                <div class="comment-section">
+                    <textarea 
+                        name="quote" 
+                        id="quote" 
+                        class="comment-input"
+                        placeholder="add a comment..."
+                    ></textarea>
+                </div>
+
+                <div class="form-footer">
+                    <button type="submit" class="create-btn">Create</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
   <%- include('../partials/nav.ejs') %>
 </html>

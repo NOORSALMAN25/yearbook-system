@@ -3,22 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/style-allposts.css" />
     <title>Explore</title>
   </head>
   <body>
-    <h3>Explore all posts</h3>
-    <ul>
+    <ul class="posts-container">
       <% posts.forEach((post) => { %>
-      <a href="/posts/<%= post._id%>">
+      <a href="/posts/<%= post._id%>" class="post-card">
         <img
           src="<%= post.image.replace(/^public/, '') %>"
           alt="Post Image"
-          style="width: 200px"
+          class="post-image"
         />
+
+        <div class="post-content">
+          <p class="post-quote"><%= post.quote%></p>
+        </div>
       </a>
-
-      <p><%= post.quote%></p>
-
       <% }) %>
     </ul>
   </body>
