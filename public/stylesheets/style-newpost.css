@@ -1,14 +1,16 @@
-* {
+ * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-weight: 100;
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: Helvetica;
   background: #000000;
   height: 100vh;
   padding: 20px;
+  font-weight: 100;
 }
 
 .container {
@@ -19,6 +21,7 @@ body {
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
   overflow: hidden;
   border: 1px solid #e0e0e0;
+  font-weight: 100;
 }
 
 .header {
@@ -28,6 +31,7 @@ body {
   padding: 20px 24px;
   border-bottom: 1px solid #e0e0e0;
   background: #ffffff;
+  font-weight: 100;
 }
 
 .close-btn {
@@ -73,12 +77,12 @@ body {
   width: 48px;
   height: 48px;
   margin: 0 auto 16px;
-  background: #000000;
+  /* background: #000000; */
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #ffffff;
+  color: #000000;
   font-size: 24px;
 }
 
@@ -127,17 +131,18 @@ body {
 }
 
 .create-btn {
-  background: #000000;
-  color: #ffffff;
+  color: #000000;
   border: none;
   padding: 14px 40px;
-  border-radius: 25px;
   font-size: 16px;
-  font-weight: 600;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  font-weight: 100;
 }
 
 .create-btn:hover {
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-  background: #333;
+color: #ca4153
+}
+
+.new-post {
+  font-weight: 100;
+  color: #333;
 }
