@@ -7,6 +7,8 @@
     <title>Explore</title>
   </head>
   <body>
+    <%- include('../partials/nav.ejs') %>
+
     <ul class="posts-container">
       <% posts.forEach((post) => { %>
       <a href="/posts/<%= post._id%>" class="post-card">
@@ -23,5 +25,4 @@
       <% }) %>
     </ul>
   </body>
-  <%- include('../partials/nav.ejs') %>
 </html>

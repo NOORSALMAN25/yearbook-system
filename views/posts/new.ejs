@@ -7,36 +7,49 @@
     <title>Create post</title>
   </head>
   <body>
-  <div class="container">
-        <div class="header">
-            <button class="close-btn" onclick="window.history.back()">×</button>
-            <h1>New post</h1>
-        
-        </div>
+    <%- include('../partials/nav.ejs') %>
+    <div class="container">
+      <div class="header">
+        <button class="close-btn" onclick="window.history.back()">×</button>
+        <h1>New post</h1>
+      </div>
 
-        <div class="form-container">
-            <form id="postForm" action="/posts" method="post" enctype="multipart/form-data">
-                <div class="upload-area" onclick="document.getElementById('imageInput').click()">
-                    <div class="upload-icon">+</div>
-                    <div class="upload-text">Click to upload image</div>
-                    <input type="file" id="imageInput" name="image" accept="image/*" class="file-input">
-                </div>
+      <div class="form-container">
+        <form
+          id="postForm"
+          action="/posts"
+          method="post"
+          enctype="multipart/form-data"
+        >
+          <div
+            class="upload-area"
+            onclick="document.getElementById('imageInput').click()"
+          >
+            <div class="upload-icon">+</div>
+            <div class="upload-text">Click to upload image</div>
+            <input
+              type="file"
+              id="imageInput"
+              name="image"
+              accept="image/*"
+              class="file-input"
+            />
+          </div>
 
-                <div class="comment-section">
-                    <textarea 
-                        name="quote" 
-                        id="quote" 
-                        class="comment-input"
-                        placeholder="add a comment..."
-                    ></textarea>
-                </div>
+          <div class="comment-section">
+            <textarea
+              name="quote"
+              id="quote"
+              class="comment-input"
+              placeholder="add a comment..."
+            ></textarea>
+          </div>
 
-                <div class="form-footer">
-                    <button type="submit" class="create-btn">Create</button>
-                </div>
-            </form>
-        </div>
+          <div class="form-footer">
+            <button type="submit" class="create-btn">Create</button>
+          </div>
+        </form>
+      </div>
     </div>
-
-  <%- include('../partials/nav.ejs') %>
+  </body>
 </html>
