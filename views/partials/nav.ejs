@@ -1,18 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/stylesheets/style.css" />
-    <title>Document</title>
-  </head>
-  <body>
-    <nav>
-      <a href="/user/<%= loggedInuser.id %>/profile">Profile</a>
-      <a href="/posts/new">Create Post</a>
-      <a href="/posts/all">Explore Posts</a>
-      <a href="/yearbook">Yearbook</a>
-      <a href="/auth/sign-out">sign out</a>
-    </nav>
-  </body>
-</html>
+<nav>
+  <div><img src="../../logos/logo ver 1.png" class="logo" alt="" /></div>
+
+  <ul>
+    <li>
+      <a href="/user/<%= loggedInuser.id %>/profile"
+        ><button class="profile">profile</button></a
+      >
+    </li>
+    <li>
+      <a href="/posts/new"><button class="new">new</button></a>
+    </li>
+    <li>
+      <a href="/posts/all"><button class="explore">explore</button></a>
+    </li>
+    <li>
+      <a href="/yearbook"><button class="yearbook">yearbook</button></a>
+    </li>
+    <li>
+      <a href="/auth/sign-out"><button class="save-changes-button">sign out</button></a>
+    </li>
+  </ul>
+</nav>

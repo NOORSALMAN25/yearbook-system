@@ -3,15 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sign-in</title>
+    <title>sign-in</title>
+    <link rel="icon" href="../logos/icon.png" type="image/x-icon" />
     <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
   <body>
     <nav>
-    <a href="/auth/sign-up">sign up</a>
+      <img src="../logos/logo ver 3.png" class="logo" alt="logo" />
+      <ul>
+        <li>
+          <a href="/auth/sign-up"><button>sign up</button></a>
+        </li>
+      </ul>
     </nav>
-    <div class="signin-container">
-      <h1>sign-in</h1>
+    <div class="sign-in-container">
+    <div class="inner-container">
+      Sign in to connect!
+      <br>
+      <br>
       <form action="/auth/sign-in" method="post">
         <input
           type="text"
@@ -19,7 +28,7 @@
           id="email"
           placeholder="example@gmail.com"
         />
-
+        <br>
         <br />
         <input
           type="password"
@@ -28,7 +37,9 @@
           placeholder="password"
         />
         <br />
+        <br>
         <button type="submit">sign-in</button>
+        </div>
       </form>
     </div>
   </body>
