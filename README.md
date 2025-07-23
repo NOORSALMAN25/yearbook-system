@@ -1,6 +1,7 @@
 # Peerfolio App - School Yearbook App
 
 ![logo](./readme-pic/logo%20ver%201.png)
+![logo2](./readme-pic/logo%20ver%201-black.png)
 
 ## **_Description_**
 
