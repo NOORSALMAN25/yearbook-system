@@ -3,23 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Profile</title>
-    <link rel="stylesheet" href="/stylesheets/profileStyle.css" />
+    <title>profile</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
   <body>
+    <%- include('../partials/nav.ejs') %>
     <div class="name">
-      <img class="pfp"
-      src="/uploads/<%= user.pfp %>"
-      alt="Profile Picture"
-      style="width: 100px "
-      />
-    <h2><%= user.username %>'s Profile</h2>
-  </div>
-    <br />
-    <br />
-    <div  id="editButton">
+      <ul id= "stuff"class="stuff">
+      <li class="stuffLi"><img class="pfp" src="/uploads/<%= user.pfp %>" alt="Profile Picture" /></li>
+      <li class="stuffLi"><h2 class="username"><%= user.username %></h2></li>
+      </ul>
+    </div>
+
+    <div id="editButton">
       <a href="/user/<%= user.id %>/edit">
-        <button >Edit profile</button>
+        <button>Edit profile</button>
       </a>
     </div>
 
@@ -31,19 +29,22 @@
     <% } %>
     <h3>Posts</h3>
 
-    <div class="grid">
-
-      <% user.posts.forEach((post) => { %>
-      <a href="/posts/<%= post._id%>">
-        <img class="post"
+<div class="grid">
+  <% user.posts.forEach((post) => { %>
+    <div class="card">
+      <a href="/posts/<%= post._id %>">
+        <img
+          class="card-img-top"
           src="<%= post.image.replace(/^public/, '') %>"
           alt="Post Image"
-          
-          />
-          <p><%= post.quote%></p>
+        />
+        <p class="card-text"><%= post.quote %></p>
       </a>
-      <% }) %>
-      </div>
+    </div>
+  <% }) %>
+</div>
+
+</div>
+
   </body>
-  <%- include('../partials/nav.ejs') %>
 </html>
