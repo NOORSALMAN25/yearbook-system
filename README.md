@@ -1,9 +1,9 @@
-# Peerfolio - your digital yearbook
+# Pee*r*folio - Your Digital Yearbook
 
 ![header](readme-pic/header.png)
 ## **Description**
 
-Peerfolio App is a platform designed for students to showcase their creativity and achievements. Students can create and publish their own posts—whether it's a project, artwork, writing, or other accomplishments. Teachers can then review these posts and select outstanding ones to be featured in the official Yearbook section, creating a collaborative and curated digital portfolio that celebrates student work throughout the year.
+Peerfolio is a platform designed for students to showcase their creativity and achievements. Students can create and publish their own posts—whether it's a project, artwork, writing, or other accomplishments. Teachers can then review these posts and select outstanding ones to be featured in the official Yearbook section, creating a collaborative and curated digital portfolio that celebrates student work throughout the year.
 
 ## **The Story Behind Peerfolio**
 
