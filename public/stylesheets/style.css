@@ -1,7 +1,6 @@
 nav {
   padding: 20px;
   margin: 0;
-  /* background-color: red; */
 }
 
 .logo {
@@ -253,4 +252,15 @@ input {
   margin-left: 50px;
   font-weight: 100;
   color: #ff8ca1;
+}
+
+#graphic {
+  display: flex; 
+  flex-direction: inline;
+  justify-content: right;
+}
+
+.graphic{
+  width: 200px;
+  margin-right: 40px;
 }
