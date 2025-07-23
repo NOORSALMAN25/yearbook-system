@@ -1,18 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Explore</title>
+  </head>
+  <body>
+    <h3>Explore all posts</h3>
+    <ul>
+      <% posts.forEach((post) => { %>
+      <a href="/posts/<%= post._id%>">
+        <img
+          src="<%= post.image.replace(/^public/, '') %>"
+          alt="Post Image"
+          style="width: 200px"
+        />
+      </a>
 
-<%- include('../partials/nav.ejs') %>
+      <p><%= post.quote%></p>
 
-<h3>Explore all posts</h3>
-<ul>
-  <% posts.forEach((post) => { %>
-  <a href="/posts/<%= post._id%>">
-    <img
-      src="<%= post.image.replace(/^public/, '') %>"
-      alt="Post Image"
-      style="width: 200px"
-    />
-  </a>
-
-  <p><%= post.quote%></p>
-
-  <% }) %>
-</ul>
+      <% }) %>
+    </ul>
+  </body>
+  <%- include('../partials/nav.ejs') %>
+</html>

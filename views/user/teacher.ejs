@@ -1,10 +1,20 @@
-<%- include('../partials/nav.ejs') %>
-<ul>
-  <% students.forEach((student)=> { %>
-    <li><%=student.username%></li>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My students</title>
+  </head>
+  <body>
+    <ul>
+      <% students.forEach((student)=> { %>
+      <li><%=student.username%></li>
 
-  <form action="/teacher/<%=student.id%>?_method=DELETE" method="POST">
-    <button type="submit">remove</button>
-  </form>
-  <%}) %>
-</ul>
+      <form action="/teacher/<%=student.id%>?_method=DELETE" method="POST">
+        <button type="submit">remove</button>
+      </form>
+      <%}) %>
+    </ul>
+  </body>
+  <%- include('../partials/nav.ejs') %>
+</html>

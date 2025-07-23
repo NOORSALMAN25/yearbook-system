@@ -1,22 +1,60 @@
-<link rel="stylesheet" href="/stylesheets/style.css" />
-  <a href="/auth/sign-in">sign in</a>
-<div class="sign-up-container">
-  <h2>School Yearbook App</h2>
-  <h3>Sign up to share your moments.</h3>
-  <form action="/auth/sign-up" method="post" enctype="multipart/form-data">
-    <label for="email">Email:</label>
-    <input type="text" name="email" id="email" />
-    <br />
-    <label for="username">Username:</label>
-    <input type="text" name="username" id="username" />
-    <br />
-    <input type="file" name="pfp" accept="img/*" id="pfp" />
-    <label for="password">Password:</label> 
-    <input type="password" name="password" id="password" />
-    <br />
-    <label for="confirmPassword">Confirm password:</label>
-    <input type="password" name="confirmPassword" id="confirmPassword" />
-    <br />
-    <input type="submit" name="Sign Up" />
-  </form>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <title>Sign-up</title>
+  </head>
+  <body>
+    <a href="/auth/sign-in">sign in</a>
+    <div class="sign-up-container">
+      <h2>School Yearbook App</h2>
+      <h3>Sign up to share your moments.</h3>
+      <form action="/auth/sign-up" method="post" enctype="multipart/form-data">
+        <label for="email"></label>
+        <input
+          type="text"
+          name="email"
+          id="email"
+          placeholder="example@gmail.com"
+        />
+        <br />
+        <br />
+        <label for="username"></label>
+        <input
+          type="text"
+          name="username"
+          id="username"
+          placeholder="username"
+        />
+        <br />
+        <br />
+        select your profile picture:
+        <br />
+        <input type="file" name="pfp" accept="img/*" id="pfp" />
+        <br>
+        <br />
+        <label for="password"></label>
+        <input
+          type="password"
+          name="password"
+          id="password"
+          placeholder="password"
+        />
+        <br />
+        <br />
+        <label for="confirmPassword"></label>
+        <input
+          type="password"
+          name="confirmPassword"
+          id="confirmPassword"
+          placeholder="confirm password"
+        />
+        <br />
+        <br />
+        <button type="submit">sign-up</button>
+      </form>
+    </div>
+  </body>
+</html>

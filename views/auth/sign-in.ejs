@@ -1,16 +1,35 @@
-<link rel="stylesheet" href="/stylesheets/style.css" />
-  <a href="/auth/sign-up">sign up</a>
-<div class="signin-container">
-  <h1>sign-in</h1>
-  <form action="/auth/sign-in" method="post">
-    <label for="email">Email:</label>
-    <input type="text" name="email" id="email" />
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign-in</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <nav>
+    <a href="/auth/sign-up">sign up</a>
+    </nav>
+    <div class="signin-container">
+      <h1>sign-in</h1>
+      <form action="/auth/sign-in" method="post">
+        <input
+          type="text"
+          name="email"
+          id="email"
+          placeholder="example@gmail.com"
+        />
 
-    <br />
-    <label for="password">Password:</label>
-    <input type="password" name="password" id="password" /> 
-    <br />
-    <button type="submit">sign-in</button>
-  </form>
-
-</div>
+        <br />
+        <input
+          type="password"
+          name="password"
+          id="password"
+          placeholder="password"
+        />
+        <br />
+        <button type="submit">sign-in</button>
+      </form>
+    </div>
+  </body>
+</html>

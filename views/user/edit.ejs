@@ -1,27 +1,42 @@
-<%- include('../partials/nav.ejs') %>
-<form
-  action="/user/<%= currentUser._id%>?_method=PUT"
-  method="post"
-  enctype="multipart/form-data"
->
-  <br />
-  <label for="email">Email:</label>
-  <input type="text" name="email" id="email" value="<%=currentUser.email%>" />
-  <br />
-  <label for="username">Username:</label>
-  <input
-    type="text"
-    name="username"
-    id="username"
-    value="<%= currentUser.username %>"
-  />
-  <br />
-  <input type="file" name="pfp" accept="img/*" id="pfp" />
-  <label for="password">Password:</label>
-  <input type="password" name="password" id="password" />
-  <br />
-  <label for="confirmPassword">Confirm password:</label>
-  <input type="password" name="confirmPassword" id="confirmPassword" />
-  <br />
-  <input type="submit" name="Sign Up" />
-</form>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit profile</title>
+  </head>
+  <body>
+    <form
+      action="/user/<%= currentUser._id%>?_method=PUT"
+      method="post"
+      enctype="multipart/form-data"
+    >
+      <br />
+      <label for="email">Email:</label>
+      <input
+        type="text"
+        name="email"
+        id="email"
+        value="<%=currentUser.email%>"
+      />
+      <br />
+      <label for="username">Username:</label>
+      <input
+        type="text"
+        name="username"
+        id="username"
+        value="<%= currentUser.username %>"
+      />
+      <br />
+      <input type="file" name="pfp" accept="img/*" id="pfp" />
+      <label for="password">Password:</label>
+      <input type="password" name="password" id="password" />
+      <br />
+      <label for="confirmPassword">Confirm password:</label>
+      <input type="password" name="confirmPassword" id="confirmPassword" />
+      <br />
+      <input type="submit" name="Sign Up" />
+    </form>
+  </body>
+  <%- include('../partials/nav.ejs') %>
+</html>

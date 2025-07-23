@@ -14,6 +14,7 @@ exports.teacher_index_get = async (req, res) => {
 
 
 exports.teacher_delete_delete = async(req, res)=> {
-  const user = await User.findByIdAndDelete(req.params.id)
+  await User.findByIdAndDelete(req.params.id)
+  await Post.findByIdAndDelete(req.params.id.posts)
   res.redirect('/teacher')
 }

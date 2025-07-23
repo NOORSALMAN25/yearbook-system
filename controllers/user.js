@@ -19,7 +19,6 @@ exports.user_show_get = async (req, res) => {
     posts: posts, 
     role: user.role,
   }
-
   res.render('user/profile.ejs', { user: data, students })
 }
 

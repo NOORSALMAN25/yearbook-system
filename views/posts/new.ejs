@@ -1,16 +1,25 @@
-
-<%- include('../partials/nav.ejs') %>
-
-
-<h3>Share a moment</h3>
-<form action="/posts" method="post" enctype="multipart/form-data">
-  <label for="image"
-    >Image (Choose carefully, you can't change it later ☺️):</label
-  >
-  <input type="file" name="image" accept="image/*" />
-  <br />
-  <label for="quote">Comment:</label>
-  <textarea name="quote" id="quote" placeholder="Enter a Comment"></textarea>
-  <br />
-  <button type="submit">Create</button>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create post</title>
+  </head>
+  <body>
+    <h3>Share a moment</h3>
+    <form action="/posts" method="post" enctype="multipart/form-data">
+      <label for="image">Image:</label>
+      <input type="file" name="image" accept="image/*" />
+      <br />
+      <label for="quote">Comment:</label>
+      <textarea
+        name="quote"
+        id="quote"
+        placeholder="Enter a Comment"
+      ></textarea>
+      <br />
+      <button type="submit">Create</button>
+    </form>
+  </body>
+  <%- include('../partials/nav.ejs') %>
+</html>
