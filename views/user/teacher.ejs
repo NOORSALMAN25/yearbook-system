@@ -13,13 +13,13 @@
     <div class="inner-container">
       My students
       <div class="underline">
-      <br>
+        <br />
       </div>
-      <br>
+      <br />
       <div class="student">
         <% students.forEach((student)=> { %> <%=student.email%>
         <br />
-        <br>
+        <br />
         <div>
           <form action="/teacher/<%=student.id%>?_method=DELETE" method="POST">
             <button type="submit" class="remove-student">remove</button>

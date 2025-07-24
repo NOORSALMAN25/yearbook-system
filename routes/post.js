@@ -7,7 +7,6 @@ const upload = require('../config/multer')
 router.post('/', upload.single('image'), postCtrl.Posts_create_post)
 
 router.get('/new', postCtrl.Posts_create_get)
-// router.post('', postCtrl.Posts_create_post)
 router.get('/all', postCtrl.Posts_index_get)
 router.get('/:postId', postCtrl.Posts_show_get)
 
