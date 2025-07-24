@@ -6,7 +6,6 @@ exports.auth_signup_get = (req, res) => {
 }
 
 exports.auth_signup_post = async (req, res) => {
-  console.log('req.file', req.file)
   const emailInDatabase = await User.findOne({ email: req.body.email })
   const userInDatabase = await User.findOne({ username: req.body.username })
 
@@ -78,10 +77,6 @@ exports.auth_signin_post = async (req, res) => {
 }
 
 exports.auth_signout_get = (req, res) => {
-  try {
     req.session.destroy()
     res.redirect('/')
-  } catch (error) {
-    console.error('An error has occurred signing out a user!', error.message)
-  }
 }

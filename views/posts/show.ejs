@@ -40,14 +40,12 @@
       <div class="buttons-section">
         <% if(roleOfUser === 'teacher'){ %>
         <div class="teacher-buttons">
-          <form 
+          <form
             action="/yearbook/<%= post._id %>"
             method="POST"
             style="display: inline"
           >
-            <button type="submit" class="approve-btn">
-            approve
-            </button>
+            <button type="submit" class="approve-btn">approve</button>
           </form>
 
           <form
@@ -55,17 +53,13 @@
             method="POST"
             style="display: inline"
           >
-            <button type="submit" class="reject-btn">
-              reject
-            </button>
+            <button type="submit" class="reject-btn">reject</button>
           </form>
         </div>
         <% } %>
 
         <div class="user-actions">
-          <a href="/posts/<%= post._id %>/edit" class="edit-link"
-            >Edit post</a
-          >
+          <a href="/posts/<%= post._id %>/edit" class="edit-link">Edit post</a>
 
           <form
             action="/posts/<%= post._id %>?_method=DELETE"

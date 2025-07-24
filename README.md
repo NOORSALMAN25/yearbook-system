@@ -1,6 +1,7 @@
 # Pee*r*folio - Your Digital Yearbook
 
 ![header](readme-pic/header.png)
+
 ## **Description**
 
 Peerfolio is a platform designed for students to showcase their creativity and achievements. Students can create and publish their own posts—whether it's a project, artwork, writing, or other accomplishments. Teachers can then review these posts and select outstanding ones to be featured in the official Yearbook section, creating a collaborative and curated digital portfolio that celebrates student work throughout the year.
@@ -17,6 +18,7 @@ Driven by the need to highlight student achievements in a more meaningful way, w
   - Express.js
   - MongoDB
   - CSS
+  - Bootstrap
 
 - Designed using Figma v125.5.6
 
@@ -30,7 +32,7 @@ Driven by the need to highlight student achievements in a more meaningful way, w
 
 ![teacher-view](./readme-pic/teacher-1.png)
 
-### Student view 
+### Student view
 
 ![student-view](./readme-pic/student-1.png)
 
@@ -42,4 +44,8 @@ Driven by the need to highlight student achievements in a more meaningful way, w
 - Notification System:
   Notify students when their posts are selected for the yearbook or when they receive feedback.
 
+- Adding Students & Other Teachers:
+  Allows teachers to add other teachers and students to Peerfolio.
+
 ## **Behind Peerfolio**
+Hussain Bader, Noor Salman, and Maryam Ali Redha
