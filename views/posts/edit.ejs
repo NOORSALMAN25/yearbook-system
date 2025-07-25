@@ -14,21 +14,14 @@
         <button class="close-btn" onclick="window.history.back()">×</button>
         <div class="new-post">Edit post</div>
       </div>
-
       <div class="form-container">
         <form
           id="postForm"
           action="/posts/<%= post._id%>?_method=PUT"
           method="post"
         >
-          <div class="comment-section">
-            <textarea
-              name="quote"
-              id="quote"
-              class="comment-input"
-              value="<%= post.quote %>"
-            ></textarea>
-          </div>
+        <input type="text" name="quote" class="comment-input" id="quote" value="<%=post.quote%>">
+
 
           <div class="form-footer">
             <button type="submit" class="create-btn">Edit</button>

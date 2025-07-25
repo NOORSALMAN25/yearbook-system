@@ -11,7 +11,7 @@
     <%- include('../partials/nav.ejs') %>
     <div class="name">
       <ul id= "stuff"class="stuff">
-      <li class="stuffLi"><img class="pfp" src="/uploads/<%= user.pfp %>" alt="Profile Picture" /></li>
+      <li class="stuffLi"><img class="pfp" src="/uploads/<%= user.pfp %>" alt="profile picture" /></li>
       <li class="stuffLi"><h2 class="username"><%= user.username %></h2></li>
       </ul>
     </div>
@@ -41,7 +41,7 @@
         <img
           class="card-img-top"
           src="<%= post.image.replace(/^public/, '') %>"
-          alt="Post Image"
+          alt="pre-approved post posted by this user"
         />
         <p class="card-text"><%= post.quote %></p>
       </a>

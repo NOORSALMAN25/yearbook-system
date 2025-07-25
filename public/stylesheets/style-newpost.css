@@ -121,7 +121,7 @@ body {
 }
 
 .comment-input::placeholder {
-  color: #999;
+  color: #000000;
 }
 
 .form-footer {
