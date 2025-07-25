@@ -59,5 +59,5 @@ exports.Posts_delete_delete = async (req, res) => {
   })
   const post = await Post.findByIdAndDelete(req.params.postId)
   await post.deleteOne()
-  res.redirect('/posts/all')
+  res.redirect('/posts')
 }
