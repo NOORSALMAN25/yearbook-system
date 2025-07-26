@@ -58,6 +58,7 @@
         </div>
         <% } %>
 
+        <%if(postOfThisId === thisUser || roleOfUser === 'teacher'){%>
         <div class="user-actions">
           <a href="/posts/<%= post._id %>/edit" class="edit-link">Edit post</a>
 
@@ -69,6 +70,7 @@
             <button type="submit" class="delete-btn">delete</button>
           </form>
         </div>
+        <%}%>
       </div>
     </div>
   </body>

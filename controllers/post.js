@@ -36,7 +36,10 @@ exports.Posts_index_get = async (req, res) => {
 exports.Posts_show_get = async (req, res) => {
   const post = await Post.findById(req.params.postId)
   const user = await User.findById(req.session.user.id)
+  const loggedInuser = await User.findById(req.session.loggedInuser.id)
+  const thisUser = loggedInuser._id.toString()
   const postedById = await User.findById(post.creator_id)
+  const postOfThisId = postedById.id
   const pfpOfPoster = await postedById.pfp
   const postedByName = await postedById.username
   const roleOfUser = user.role
@@ -46,7 +49,9 @@ exports.Posts_show_get = async (req, res) => {
     roleOfUser,
     postedByName,
     pfpOfPoster,
-    postedById
+    postedById,
+    thisUser,
+    postOfThisId
   })
 }
 
@@ -69,10 +74,19 @@ exports.Posts_update_put = async (req, res) => {
 }
 
 exports.Posts_delete_delete = async (req, res) => {
-  await User.findByIdAndUpdate(req.session.user.id, {
-    $pull: { posts: req.params.postId }
-  })
-  const post = await Post.findByIdAndDelete(req.params.postId)
-  await post.deleteOne()
-  res.redirect('/posts')
+  const post = await Post.findById(req.params.postId)
+  const creatorOfPost = post.creator_id
+  if (
+    creatorOfPost.toString() === req.session.loggedInuser.id ||
+    req.session.user.role === 'teacher'
+  ) {
+    await User.findByIdAndUpdate(req.session.user.id, {
+      $pull: { posts: req.params.postId }
+    })
+    const post = await Post.findByIdAndDelete(req.params.postId)
+    await post.deleteOne()
+    res.redirect('/posts')
+  } else {
+    res.send('hey! no.')
+  }
 }
