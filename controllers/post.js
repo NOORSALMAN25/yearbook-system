@@ -40,12 +40,27 @@ exports.Posts_show_get = async (req, res) => {
   const pfpOfPoster = await postedById.pfp
   const postedByName = await postedById.username
   const roleOfUser = user.role
-  res.render('posts/show.ejs', { post, user, roleOfUser, postedByName, pfpOfPoster, postedById})
+  res.render('posts/show.ejs', {
+    post,
+    user,
+    roleOfUser,
+    postedByName,
+    pfpOfPoster,
+    postedById
+  })
 }
 
 exports.Posts_edit_get = async (req, res) => {
   const post = await Post.findById(req.params.postId)
-  res.render('posts/edit.ejs', { post })
+  const creatorOfPost = post.creator_id
+  if (
+    creatorOfPost.toString() === req.session.loggedInuser.id ||
+    req.session.user.role === 'teacher'
+  ) {
+    res.render('posts/edit.ejs', { post })
+  } else {
+    res.send('Inaccessible')
+  }
 }
 
 exports.Posts_update_put = async (req, res) => {
